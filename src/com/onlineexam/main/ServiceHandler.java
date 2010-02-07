@@ -1,13 +1,15 @@
 /**
  * Software Engineering Course task
- * copyright © 2010 USS.
+ * copyright 2010 USS.
  */
 package com.onlineexam.main;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.onlineexam.service.SecurityService;
+import com.onlineexam.domain.User;
+import com.onlineexam.domain.UserType;
+import com.onlineexam.service.AccountService;
 
 /**
  * @author Joe Zhu
@@ -29,8 +31,9 @@ public class ServiceHandler {
 	//test if the getService works fine
 	public static void main(String[] args) {
 		ServiceHandler sh = ServiceHandler.getInstance();
-		SecurityService service = (SecurityService)sh.getService("accountService");
-		System.out.println(service.getAccount("").getUsername());
+		AccountService service = (AccountService)sh.getService("accountService");
+		User user = new User("admin","admin",UserType.ADMIN);
+		service.save(user);
 	}
 
 }
