@@ -8,8 +8,8 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="loginService" class="com.onlineexam.service.impl.LoginServiceImpl">
 	</bean>
 
-		<bean id="accountService" class="com.onlineexam.service.impl.SecurityServiceImp">
-			<property name="accountDAO" ref="accountDAO" />
+		<bean id="accountService" class="com.onlineexam.service.impl.AccountServiceImp">
+			<property name="userDAO" ref="userDAO" />
 			<!--
 				additional collaborators and configuration for this bean go here
 			-->
