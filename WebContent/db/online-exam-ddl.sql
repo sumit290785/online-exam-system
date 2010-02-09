@@ -92,7 +92,6 @@
         LASTMODIFIED datetime not null,
         QUESTION_CONTENT text not null,
         IS_ESSAY bit not null,
-        OPTION_ANSWER integer,
         CATEGORY_ID integer not null,
         primary key (QUESTION_ID)
     );
