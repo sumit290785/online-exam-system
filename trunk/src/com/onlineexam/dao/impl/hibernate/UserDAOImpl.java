@@ -13,6 +13,7 @@ import javax.persistence.Persistence;
 import com.onlineexam.dao.UserDAO;
 import com.onlineexam.domain.User;
 import com.onlineexam.domain.UserType;
+import com.onlineexam.main.HibernateUtil;
 
 /**
  * @author Joe Zhu
@@ -31,12 +32,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public void save(User user) {
-        // Start EntityManagerFactory
-        EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("online-exam");
 
         // First unit of work
-        EntityManager em = emf.createEntityManager();
+		EntityManager em = HibernateUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         em.persist(user);

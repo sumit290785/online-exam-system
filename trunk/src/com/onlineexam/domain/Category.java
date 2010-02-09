@@ -53,8 +53,7 @@ public class Category implements Serializable {
 	@Column(name = "CATEGORY_NAME", length = 50, nullable = false, unique = true)
 	private String categoryName;
 
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "category", fetch = FetchType.LAZY)
-	@JoinColumn(nullable = true)
+	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "category", fetch = FetchType.LAZY)
 	private Set<Question> Questions = new HashSet<Question>();
 
 	@Column(name = "TOTAL_SCORE", nullable = false)

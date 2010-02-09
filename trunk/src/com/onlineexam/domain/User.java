@@ -14,6 +14,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -73,9 +75,12 @@ public class User implements Serializable, Comparable {
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
 
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "user", fetch = FetchType.LAZY)
-	@JoinColumn(nullable = true)
+	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "user", fetch = FetchType.LAZY)
 	private Set<Exam> exams = new HashSet<Exam>();
+
+	@ManyToMany
+	@JoinTable(name = "USER_CATEGORY", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "CATEGORY_ID") })
+	private Set<Category> categoryTobeExamed = new HashSet<Category>();
 
 	// ********************** Constructor ********************** //
 
@@ -86,7 +91,6 @@ public class User implements Serializable, Comparable {
 		this.userType = userType;
 	}
 
-	
 	public User(String username, String password, String firstName,
 			String lastName, String email, String phone, String street,
 			String zipcode, String city, UserType userType) {
@@ -102,7 +106,6 @@ public class User implements Serializable, Comparable {
 		this.city = city;
 		this.userType = userType;
 	}
-
 
 	// ********************** Accessor Methods ********************** //
 
@@ -220,6 +223,14 @@ public class User implements Serializable, Comparable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public Set<Category> getCategoryTobeExamed() {
+		return categoryTobeExamed;
+	}
+
+	public void setCategoryTobeExamed(Set<Category> categoryTobeExamed) {
+		this.categoryTobeExamed = categoryTobeExamed;
 	}
 
 	// ********************** Common Methods ********************** //
