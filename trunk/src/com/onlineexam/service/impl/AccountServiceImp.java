@@ -41,6 +41,10 @@ public class AccountServiceImp implements AccountService {
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+	@Override
+	public User getUserByID(int ID) {
+		return userDAO.getUserByID(ID);
+	}
 
 
 	

@@ -76,6 +76,7 @@ public class Exam implements Serializable{
 		this.answers = answers;
 		this.category = category;
 	}
+	public Exam(){}
 	
 	// ********************** Accessor Methods ********************** //
 	

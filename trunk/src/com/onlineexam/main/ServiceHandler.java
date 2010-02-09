@@ -32,8 +32,9 @@ public class ServiceHandler {
 	public static void main(String[] args) {
 		ServiceHandler sh = ServiceHandler.getInstance();
 		AccountService service = (AccountService)sh.getService("accountService");
-		User user = new User("admin","admin",UserType.ADMIN);
-		service.save(user);
+		//User user = new User("admin2","admin2",UserType.ADMIN);
+		//service.save(user);
+		System.out.println(service.getUserByID(1));
 	}
 
 }

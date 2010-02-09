@@ -16,4 +16,6 @@ public interface AccountService {
 	
 	public void save(User user);
 	
+	public User getUserByID(int ID);
+	
 }
