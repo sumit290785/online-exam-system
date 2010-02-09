@@ -54,9 +54,6 @@ public class Question implements Serializable {
 	//for new function like essay
 	@Column(name = "IS_ESSAY", nullable = false)
 	private boolean essay = false;
-	
-	@Column(name = "OPTION_ANSWER", nullable = true)
-	private int optionAnswer;
 
 	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "QUESTION_ID", nullable = true)
@@ -65,6 +62,9 @@ public class Question implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID", nullable = false)
 	private Category category;
+
+	
+
 
 	public int getVersion() {
 		return version;
@@ -123,14 +123,6 @@ public class Question implements Serializable {
 	}
 	
 
-	public int getOptionAnswer() {
-		return optionAnswer;
-	}
-
-	public void setOptionAnswer(int optionAnswer) {
-		this.optionAnswer = optionAnswer;
-	}
-
 	// ********************** Constructor ********************** //
 
 	public Question(String questionContent, Set<Option> options,
@@ -145,6 +137,9 @@ public class Question implements Serializable {
 		this.essay = essay;
 		this.options = options;
 		this.category = category;
+	}
+	
+	public Question() {
 	}
 
 	// ********************** Common Methods ********************** //

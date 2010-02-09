@@ -40,6 +40,14 @@ public class Option implements Serializable{
 	
 	
 	
+	public Option(String optionContent, boolean correct) {
+		super();
+		this.optionContent = optionContent;
+		this.correct = correct;
+	}
+	
+	public Option(){}
+
 	public int getVersion() {
 		return version;
 	}

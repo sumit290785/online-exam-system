@@ -10,10 +10,12 @@ import com.onlineexam.domain.User;
  * @author Joe Zhu
  *
  */
-public interface UserDAO {
+public interface UserDAO extends GenericDAO<User>{
 	
 	public User getUser(String username);
 	
 	public void save(User user);
+	
+	public User getUserByID(int ID);
 
 }

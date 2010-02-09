@@ -4,10 +4,12 @@
  */
 package com.onlineexam.dao;
 
+import com.onlineexam.domain.Exam;
+
 /**
  * @author zhujoe
  *
  */
-public interface ExamDAO {
+public interface ExamDAO  extends GenericDAO<Exam>{
 
 }

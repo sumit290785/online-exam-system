@@ -79,6 +79,7 @@ public class Category implements Serializable {
 		this.passedQuestions = passedQuestions;
 		this.examTime = examTime;
 	}
+	public Category(){}
 
 	// ********************** Accessor Methods ********************** //
 	

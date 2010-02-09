@@ -106,6 +106,8 @@ public class User implements Serializable, Comparable {
 		this.city = city;
 		this.userType = userType;
 	}
+	
+	public User(){}
 
 	// ********************** Accessor Methods ********************** //
 

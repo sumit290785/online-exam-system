@@ -57,6 +57,7 @@ public class Answer implements Serializable{
 		super();
 		this.question = question;
 	}
+	public Answer(){}
 	
 	public int getVersion() {
 		return version;
