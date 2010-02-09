@@ -3,19 +3,22 @@
 <project name="online-exam" default="build" basedir="./">
 	<property environment="env" />
 	<property name="src.dir" value="${basedir}/src" />
+	<property name="conf.dir" value="${basedir}/config" />
 	<property name="test.dir" value="${basedir}/test" />
 	<property name="proj.shortname" value="online-exam" />
 	<property name="online-exam.home" value="${basedir}/WebContent" />
 	<property name="lib.dir" value="${online-exam.home}/WEB-INF/lib" />
 	<property name="db.dir" value="${online-exam.home}/db" />
-	<property name="tomcat.home" value="${env.TOMCAT_HOME}" />
 
 	<path id="classpath">
 		<fileset dir="${lib.dir}">
 			<!--<include name="**/*.jar" />-->
 		</fileset>
 	</path>
-
+	
+    <patternset id="meta.files">
+        <include name="**/*.xml"/>
+    </patternset>
 
 	<!-- You can change the build.dir to any folder as you like -->
 	<property name="build.dir" value="${basedir}/build" />
@@ -40,6 +43,14 @@
 			<classpath refid="classpath" />
 		</javac>
 	</target>
+	
+    <target name="copymetafiles" depends="prepare">
+        <copy todir="${build.classes.dir}">
+            <fileset dir="${conf.dir}">
+                <patternset refid="meta.files"/>
+            </fileset>
+        </copy>
+    </target>
 
 	<!-- auto all the unit test case pattern is **/*Test.* -->
 	<target name="unit-test" depends="javac">
@@ -59,7 +70,7 @@
 	</target>
 
 	<!-- create the build.-->
-	<target name="build" depends="javac">
+	<target name="build" depends="javac,copymetafiles">
 		<copydir src="${online-exam.home}" dest="${build.online-exam.dir}">
 			<!--<include name="**/js/**.*" />
 			<exclude name="WEB-INF/lib/**" />-->
