@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -34,12 +35,14 @@ public class Answer implements Serializable{
 	private int version = 0;
 	
 	//other attributes
-	@OneToOne
+	
+	@ManyToOne
 	@JoinColumn(name = "Question_ID", nullable = false)
 	private Question question;
 	
-	@Column(name = "EXAM_ANSWER", nullable = true)
-	private int answer; 
+	@OneToOne
+	@JoinColumn(name = "EXAM_ANSWER", nullable = false)
+	private Option answer; 
 	
 	//if the question is once every page
 	@Column(name = "IS_MARK_REVIEW", nullable = true)
@@ -72,11 +75,11 @@ public class Answer implements Serializable{
 		this.question = question;
 	}
 
-	public int getAnswer() {
+	public Option getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(int answer) {
+	public void setAnswer(Option answer) {
 		this.answer = answer;
 	}
 
