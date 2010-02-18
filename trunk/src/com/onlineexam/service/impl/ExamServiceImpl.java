@@ -4,7 +4,9 @@
  */
 package com.onlineexam.service.impl;
 
+import com.onlineexam.dao.CategoryDAO;
 import com.onlineexam.dao.ExamDAO;
+import com.onlineexam.domain.Category;
 import com.onlineexam.domain.Exam;
 import com.onlineexam.domain.User;
 import com.onlineexam.service.ExamService;
@@ -16,6 +18,7 @@ import com.onlineexam.service.ExamService;
 public class ExamServiceImpl implements ExamService {
 	
 	private ExamDAO examDAO;
+	private CategoryDAO categoryDAOImpl;
 	
 	
 
@@ -43,7 +46,5 @@ public class ExamServiceImpl implements ExamService {
 	public void setExamDAO(ExamDAO examDAO) {
 		this.examDAO = examDAO;
 	}
-	
-	
 
 }
