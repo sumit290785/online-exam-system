@@ -4,6 +4,7 @@
  */
 package com.onlineexam.service;
 
+import com.onlineexam.domain.Category;
 import com.onlineexam.domain.Exam;
 import com.onlineexam.domain.User;
 
