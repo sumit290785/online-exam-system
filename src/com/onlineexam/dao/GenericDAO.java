@@ -6,6 +6,8 @@ package com.onlineexam.dao;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 /**
  * @author zhujoe
  *
@@ -21,5 +23,7 @@ public interface GenericDAO<T> {
     T makePersistent(T entity);
 
     void makeTransient(T entity);
+    
+	List<T> executeQuery(DetachedCriteria query);
 
 }
