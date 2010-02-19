@@ -8,8 +8,13 @@ import com.onlineexam.domain.Question;
  *
  */
 public interface QuestionService {
-	public void save(Category category) ;
-	public void save(Question question) ;
+	public Category addCategory(Category category) ;
+	public Category updateCategory(Category category);
+	public void removeCategory(int categoryID) ;
 	public Category getCategoryByID(int ID) ;
 	public Question getQuestionByID(int ID) ;
+	public Question addQuestion(Question question);
+	public Question updateQuestion(Question question);
+	public void removeQuestion(int questionID);
+
 }
