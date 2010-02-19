@@ -4,8 +4,10 @@
  */
 package com.onlineexam.service;
 
+import com.onlineexam.domain.Answer;
 import com.onlineexam.domain.Category;
 import com.onlineexam.domain.Exam;
+import com.onlineexam.domain.Question;
 import com.onlineexam.domain.User;
 
 /**
@@ -14,8 +16,11 @@ import com.onlineexam.domain.User;
  */
 public interface ExamService {
 	
-	public Exam createExam(User user);
+	public Exam createExam(String userName,int categoryID);
 	
-	public boolean caculateScore(Exam exam);
+	public Exam submitExam(int examID);
+	
+	public Answer submitAnswer(int answerID, int... optionID);
 
+	public Question getQuestion(int examID,int seqNUM,Boolean isLAST);
 }
