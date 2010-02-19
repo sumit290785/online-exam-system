@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import com.onlineexam.dao.GenericDAO;
 import com.onlineexam.main.HibernateUtil;
 
@@ -113,6 +115,15 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
 	public void clear() {
 		getEntityManager().clear();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> executeQuery(DetachedCriteria query){
+		EntityTransaction tx = em.getTransaction();;
+		List<T> results = query.getExecutableCriteria(((org.hibernate.ejb.HibernateEntityManager) getEntityManager()).getSession()).list();
+		tx.commit();
+		return results;
 	}
 
 }
