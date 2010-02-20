@@ -55,12 +55,55 @@
 			<null-value />
 		</managed-property>
 	</managed-bean>
+	
+  	<managed-bean>
+  		<managed-bean-name>selectCategory</managed-bean-name>
+  		<managed-bean-class>com.onlineexam.web.SelectCategoryForm</managed-bean-class>
+  		<managed-bean-scope>request</managed-bean-scope>
+  		<managed-property>
+			<property-name>categoryId</property-name>
+			<null-value />
+		</managed-property>
+  	</managed-bean>
+  	
+  	<managed-bean>
+  		<managed-bean-name>enterExam</managed-bean-name>
+  		<managed-bean-class>com.onlineexam.web.EnterExamForm</managed-bean-class>
+  		<managed-bean-scope>request</managed-bean-scope>
+  		<managed-property>
+			<property-name>categoryId</property-name>
+			<null-value />
+		</managed-property>
+  	</managed-bean>
 
+  	<managed-bean>
+  		<managed-bean-name>takeExam</managed-bean-name>
+  		<managed-bean-class>com.onlineexam.web.TakeExamForm</managed-bean-class>
+  		<managed-bean-scope>session</managed-bean-scope>
+  		<managed-property>
+			<property-name>questionId</property-name>
+			<null-value />
+		</managed-property>
+  	</managed-bean>
+  	
+  	<managed-bean>
+  		<managed-bean-name>finishExam</managed-bean-name>
+  		<managed-bean-class>com.onlineexam.web.FinishExamForm</managed-bean-class>
+  		<managed-bean-scope>request</managed-bean-scope>
+  	</managed-bean>
+
+	<!-- management -->
+  	<managed-bean>
+  		<managed-bean-name>manageCategory</managed-bean-name>
+  		<managed-bean-class>com.onlineexam.web.ManageCategoryForm</managed-bean-class>
+  		<managed-bean-scope>request</managed-bean-scope>
+  	</managed-bean>	
+	
 	<navigation-rule>
 		<from-view-id>/pages/login.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/pages/home.jsp</to-view-id>
+			<to-view-id>/pages/select_category.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>failure</from-outcome>
@@ -68,4 +111,32 @@
 		</navigation-case>
 	</navigation-rule>
 
+	<navigation-rule>
+		<from-view-id>/pages/select_category.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>ENTER_EXAM</from-outcome>
+			<to-view-id>/pages/enter_exam.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/enter_exam.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>TAKE_EXAM</from-outcome>
+			<to-view-id>/pages/take_exam.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>SELECT_CATEGORY</from-outcome>
+			<to-view-id>/pages/select_category.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/take_exam.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>FINISH_EXAM</from-outcome>
+			<to-view-id>/pages/finish_exam.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

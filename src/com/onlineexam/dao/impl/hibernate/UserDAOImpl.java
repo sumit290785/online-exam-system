@@ -4,9 +4,12 @@
  */
 package com.onlineexam.dao.impl.hibernate;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import com.onlineexam.dao.UserDAO;
 import com.onlineexam.domain.User;
-import com.onlineexam.domain.UserType;
 
 /**
  * @author Joe Zhu
@@ -20,8 +23,14 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements
 	 * 
 	 * @see com.onlineexam.dao.AccountDAO#getAccount(java.lang.String)
 	 */
+	@SuppressWarnings("unchecked")
 	public User getUser(String userName) {
-		return null;
+		Query q  = this.getEntityManager().createQuery("SELECT u FROM User u where u.username = ?1");
+		q.setParameter(1, userName);
+		User user  = (User) q.getSingleResult();
+		System.out.println("**********************user:" + user);
+		
+		return user;
 	}
 
 	public void save(User user) {
