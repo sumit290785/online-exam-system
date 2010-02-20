@@ -1,10 +1,15 @@
 package com.onlineexam.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
+import com.onlineexam.domain.Category;
 import com.onlineexam.main.ServiceHandler;
 import com.onlineexam.service.LoginService;
+import com.onlineexam.util.FacesUtil;
 
 /**
  * @author Joel Tsai
@@ -12,7 +17,6 @@ import com.onlineexam.service.LoginService;
 public final class LoginForm {
 	private String password;
 	private String userId;
-	private String birthday;
 
 	// private Action loginAction;
 
@@ -63,8 +67,9 @@ public final class LoginForm {
 		// Otherwise, login succeeds.
 		if (isValid == false)
 			return "failure";
-		else
+		else {
 			return "success";
+		}
 	}
 
 	public void validate(FacesContext context, UIComponent toValidate,
@@ -72,11 +77,4 @@ public final class LoginForm {
 
 	}
 
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
 }

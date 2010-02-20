@@ -1,6 +1,8 @@
 
 package com.onlineexam.service.impl;
 
+import com.onlineexam.dao.UserDAO;
+import com.onlineexam.domain.User;
 import com.onlineexam.service.LoginService;
 
 /**
@@ -8,12 +10,27 @@ import com.onlineexam.service.LoginService;
  *
  */
 public class LoginServiceImpl implements LoginService {
-	public boolean checkUser(String user, String passwd) {
-		//TODO: will be removed soon.
-		if ("user".equals(user) && "passwd".equals(passwd)) {
+
+	private UserDAO userDAO;
+	
+	public boolean checkUser(String userName, String passwd) {
+
+		User user = userDAO.getUser(userName);
+		String userPasswd = user.getPassword();
+		if (passwd.equals(userPasswd)) {
 			return true;
-		} else {
-			return false;
 		}
+		return false;
+		
 	}
+
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+	
+	
 }

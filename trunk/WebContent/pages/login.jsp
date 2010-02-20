@@ -1,42 +1,83 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<%@ page language="java" contentType="text/html; charset=GB18030"
+	pageEncoding="GB18030"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Login</title>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
+<title>ÔÚÏß¿¼ÊÔÏµÍ³</title>
+<style type="text/css">
+<!--
+.ol {
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+.USS {
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-weight: bold;
+	font-size: 20px;
+}
+-->
+</style>
 </head>
+
 <body>
-Log in with your User ID and Password.
-<br />
-<br />
 <f:view>
 	 <h:messages showDetail="#{true}" showSummary="#{true}"/>
 	<h:form>
-		<h:outputLabel for="userId">
-			<h:outputText value="User ID" />
+<table width="200" border="0" align="center">
+  <tr>
+    <td align="center" valign="middle"><img src="Images/welcome/welcome.png" width="760" height="400" /></td>
+  </tr>
+  <tr>
+  	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle"><table width="400" border="0">
+        <tr>
+          <td><table width="400" border="0">
+            <tr>
+              <td width="120" align="right" class="USS">
+              		<h:outputLabel for="userId">
+			<h:outputText value="ÓÃ»§Ãû" />
 		</h:outputLabel>
-		<h:inputText id="userId" value="#{login.userId}">
+
+             </td>
+              <td width="264" align="left">&nbsp;
+              		<h:inputText id="userId" value="#{login.userId}">
 			<f:validateLength maximum="20"
-                                  minimum="3"/>
+                                  minimum="2"/>
         </h:inputText>
-		<br />
-
-		<h:outputLabel for="password">
-			<h:outputText value="Password" />
-		</h:outputLabel>
-		<h:inputSecret id="password" required="#{true}" value="#{login.password}" />
-		<br />
-		<!--
-		<h:outputLabel for="birthday">
-			<h:outputText value="Birthday" />
-		</h:outputLabel>
-
-		<h:inputText id="birthday" required="#{true}" value="#{login.birthday}">
-			<f:convertDateTime pattern="MM/dd/yyyy" />
-		</h:inputText>
-		  -->
-		<h:commandButton action="#{login.login}" value="Login" />
+              </td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td><table width="400" border="0">
+            <tr>
+              <td width="120" align="right" class="USS">
+     		<h:outputLabel for="password">
+			<h:outputText value="ÃÜÂë" />
+		</h:outputLabel>         
+             </td>
+              <td width="264" align="left">&nbsp;
+              <h:inputSecret id="password" required="#{true}" value="#{login.password}" />
+              </td>
+            </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td><table width="400" border="0">
+            <tr>
+              <td width="234" align="center"><a href="" class="USS">Íü¼ÇÃÜÂë?</a></td>
+              <td width="156"><h:commandButton action="#{login.login}" image="Images/welcome/logon.png" value="Login" /></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+    <p>&nbsp;</p></td>
+  </tr>
+</table>
 	</h:form>
 </f:view>
 </body>
