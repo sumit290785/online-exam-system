@@ -10,7 +10,7 @@ import com.onlineexam.domain.Question;
  *
  */
 public interface AnswerDAO extends  GenericDAO<Answer> {
-	List<Answer> createAnswers(List<Question> questionList);
+	List<Answer> initialAnswers(List<Question> questionList);
 	Answer findByExamIDAndSeqNUM(int examID, int seqNUM);
 
 }
