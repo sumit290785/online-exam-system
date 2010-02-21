@@ -22,5 +22,5 @@ public interface ExamService {
 	
 	public Answer submitAnswer(int answerID, int... optionID);
 
-	public Question getQuestion(int examID,int seqNUM,Boolean isLAST);
+	public Answer getQuestion(int examID,int seqNUM,Boolean isLAST);
 }
