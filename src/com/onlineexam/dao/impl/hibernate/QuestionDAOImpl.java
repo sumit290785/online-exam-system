@@ -27,9 +27,14 @@ public class QuestionDAOImpl extends GenericDAOImpl<Question> implements Questio
 		// TODO Auto-generated method stub
 		EntityTransaction tx = this.getEntityManager().getTransaction();
 		tx.begin();
-		List<Question> result = getEntityManager().createQuery(
-				"from " + getEntityBeanType().getName()+" where question.category.id ="+category.getId()+" order by rand").setMaxResults(category.getTotalQuestions()).getResultList();
-		
+		int question_num = category.getTotalQuestions();
+		Query query = getEntityManager().createQuery(
+				"from " + getEntityBeanType().getName()+" where category.id ="+category.getId());
+		Random   r=new   Random(); 
+		int size = query.getResultList().size();
+		query.setMaxResults(question_num);
+		query.setFirstResult(r.nextInt(size-question_num)+1); 
+		List<Question> result =query.getResultList();
 		tx.commit();
 		return result;
 	}

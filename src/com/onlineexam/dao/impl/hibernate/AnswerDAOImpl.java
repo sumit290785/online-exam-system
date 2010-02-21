@@ -17,16 +17,16 @@ import com.onlineexam.domain.Question;
  */
 public class AnswerDAOImpl extends GenericDAOImpl<Answer> implements AnswerDAO {
 
-	public List<Answer> createAnswers(List<Question> questionList){
+	public List<Answer> initialAnswers(List<Question> questionList){
 		Answer answer;
-		List<Answer> answerList= new ArrayList();
+		List<Answer> answerList= new ArrayList<Answer>();
 		for (int i=0;i<questionList.size();i++){
 			Question question = questionList.get(i);
 			answer = new Answer();
 			answer.setQuestion(question);
 			answer.setMarkReview(false);
 			answer.setAnswered(false);
-			this.makePersistent(answer);
+			answer.setSequenceId(i+1);
 			answerList.add(answer);
 		}
 		return answerList;
