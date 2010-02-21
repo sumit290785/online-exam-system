@@ -15,5 +15,17 @@ class="com.onlineexam.dao.impl.hibernate.QuestionDAOImpl">
 class="com.onlineexam.dao.impl.hibernate.CategoryDAOImpl">
 <!-- additional collaborators and configuration for this bean go here -->
 </bean>
+<bean id="answerDAO"
+class="com.onlineexam.dao.impl.hibernate.AnswerDAOImpl">
+<!-- additional collaborators and configuration for this bean go here -->
+</bean>
+<bean id="examDAO"
+class="com.onlineexam.dao.impl.hibernate.ExamDAOImpl">
+<!-- additional collaborators and configuration for this bean go here -->
+</bean>
+<bean id="optionDAO"
+class="com.onlineexam.dao.impl.hibernate.OptionDAOImpl">
+<!-- additional collaborators and configuration for this bean go here -->
+</bean>
 <!-- more bean definitions for data access objects go here -->
 </beans>
