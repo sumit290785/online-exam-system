@@ -1,4 +1,12 @@
 
+    alter table ANSWER_OPTION 
+        drop 
+        foreign key FK9BE03416348E1955;
+
+    alter table ANSWER_OPTION 
+        drop 
+        foreign key FK9BE03416559C49F5;
+
     alter table EXAMS 
         drop 
         foreign key FK3F55414D8756695;
@@ -6,10 +14,6 @@
     alter table EXAMS 
         drop 
         foreign key FK3F5541460F8DCF5;
-
-    alter table EXAM_ANSWERS 
-        drop 
-        foreign key FK65930C35DE4D24AE;
 
     alter table EXAM_ANSWERS 
         drop 
@@ -35,6 +39,8 @@
         drop 
         foreign key FK48520EF2D8756695;
 
+    drop table if exists ANSWER_OPTION;
+
     drop table if exists EXAMS;
 
     drop table if exists EXAM_ANSWERS;
@@ -48,6 +54,12 @@
     drop table if exists USERS;
 
     drop table if exists USER_CATEGORY;
+
+    create table ANSWER_OPTION (
+        ANSWER_ID integer not null,
+        OPTION_ID integer not null,
+        primary key (ANSWER_ID, OPTION_ID)
+    );
 
     create table EXAMS (
         EXAM_ID integer not null auto_increment,
@@ -66,7 +78,7 @@
         OBJ_VERSION integer,
         IS_MARK_REVIEW bit,
         IS_ANSWERED bit,
-        EXAM_ANSWER integer not null,
+        SEQUENCE_ID integer,
         Question_ID integer not null,
         EXAM_ID integer not null,
         primary key (ANSWER_ID)
@@ -129,6 +141,18 @@
         primary key (USER_ID, CATEGORY_ID)
     );
 
+    alter table ANSWER_OPTION 
+        add index FK9BE03416348E1955 (ANSWER_ID), 
+        add constraint FK9BE03416348E1955 
+        foreign key (ANSWER_ID) 
+        references EXAM_ANSWERS (ANSWER_ID);
+
+    alter table ANSWER_OPTION 
+        add index FK9BE03416559C49F5 (OPTION_ID), 
+        add constraint FK9BE03416559C49F5 
+        foreign key (OPTION_ID) 
+        references QUSTION_OPTION (OPTION_ID);
+
     alter table EXAMS 
         add index FK3F55414D8756695 (CATEGORY_ID), 
         add constraint FK3F55414D8756695 
@@ -140,12 +164,6 @@
         add constraint FK3F5541460F8DCF5 
         foreign key (USER_ID) 
         references USERS (USER_ID);
-
-    alter table EXAM_ANSWERS 
-        add index FK65930C35DE4D24AE (EXAM_ANSWER), 
-        add constraint FK65930C35DE4D24AE 
-        foreign key (EXAM_ANSWER) 
-        references QUSTION_OPTION (OPTION_ID);
 
     alter table EXAM_ANSWERS 
         add index FK65930C351ADB8C75 (EXAM_ID), 
