@@ -120,9 +120,9 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> executeQuery(DetachedCriteria query){
-		EntityTransaction tx = em.getTransaction();;
+//		EntityTransaction tx = this.getEntityManager().getTransaction();;
 		List<T> results = query.getExecutableCriteria(((org.hibernate.ejb.HibernateEntityManager) getEntityManager()).getSession()).list();
-		tx.commit();
+//		tx.commit();
 		return results;
 	}
 
