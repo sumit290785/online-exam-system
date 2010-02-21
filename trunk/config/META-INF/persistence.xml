@@ -28,7 +28,7 @@
           <property name="hibernate.connection.driver_class"
                     value="com.mysql.jdbc.Driver"/>
           <property name="hibernate.connection.url"
-                    value="jdbc:mysql://localhost:3306/online_exam"/>
+                    value="jdbc:mysql://localhost:3306/online-exam"/>
           <property name="hibernate.connection.username"
                     value="root"/>
 
@@ -45,7 +45,7 @@
 
           <property name="hibernate.dialect"
                     value="org.hibernate.dialect.MySQLDialect"/>
-
+			<property name="hibernate.show_sql" value="true" />
       </properties>
    </persistence-unit>
 
