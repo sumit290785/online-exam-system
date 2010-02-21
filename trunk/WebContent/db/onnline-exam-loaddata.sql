@@ -13,18 +13,18 @@ INSERT INTO exam_categorys (CATEGORY_ID, OBJ_VERSION, CREATED, LASTMODIFIED, CAT
 -- loading data for table 'questions'
 --
 
-INSERT INTO questions (QUESTION_ID, OBJ_VERSION, CREATED, LASTMODIFIED, QUESTION_CONTENT, IS_ESSAY, OPTION_ANSWER, CATEGORY_ID) VALUES
-(1, 1, '2010-02-19 02:08:38', '2010-02-19 02:08:38', 'Which of the following is NOT one of the five individual aspects of Service Design?', b'0', NULL, 1),
-(2, 1, '2010-02-19 02:17:45', '2010-02-19 02:17:45', 'Which of the following is NOT the responsibility of the Service Catalogue Manager?', b'0', NULL, 1),
-(3, 1, '2010-02-19 02:21:24', '2010-02-19 02:21:24', 'Which of the following statements is CORRECT?', b'0', NULL, 1),
-(4, 1, '2010-02-19 02:23:11', '2010-02-19 02:23:11', 'Which of the following is NOT a characteristic of a process?', b'0', NULL, 1),
-(5, 1, '2010-02-19 02:28:23', '2010-02-19 02:28:23', 'Which of the following statements about processes is INCORRECT?', b'0', NULL, 1),
-(6, 1, '2010-02-19 02:29:51', '2010-02-19 02:29:51', 'What is a RACI model used for?', b'0', NULL, 1),
-(7, 1, '2010-02-19 02:30:56', '2010-02-19 02:30:56', 'The group that authorizes changes that must be installed faster than the normal process is called the?', b'0', NULL, 1),
-(8, 1, '2010-02-19 02:32:10', '2010-02-19 02:32:10', 'Contracts relating to an outsourced Data Centre would be managed by?', b'0', NULL, 1),
-(9, 1, '2010-02-19 02:32:59', '2010-02-19 02:32:59', 'Which Service Design process makes the most use of data supplied by Demand Management?', b'0', NULL, 1),
-(10, 1, '2010-02-19 02:33:56', '2010-02-19 02:33:56', 'Which of the following CANNOT be stored and managed by a tool?', b'0', NULL, 1),
-(11, 1, '2010-02-19 02:34:48', '2010-02-19 02:34:48', 'The BEST description of the purpose of Service Operation is?', b'0', NULL, 1);
+INSERT INTO questions (QUESTION_ID, OBJ_VERSION, CREATED, LASTMODIFIED, QUESTION_CONTENT, IS_ESSAY,  CATEGORY_ID) VALUES
+(1, 1, '2010-02-19 02:08:38', '2010-02-19 02:08:38', 'Which of the following is NOT one of the five individual aspects of Service Design?', b'0',  1),
+(2, 1, '2010-02-19 02:17:45', '2010-02-19 02:17:45', 'Which of the following is NOT the responsibility of the Service Catalogue Manager?', b'0',  1),
+(3, 1, '2010-02-19 02:21:24', '2010-02-19 02:21:24', 'Which of the following statements is CORRECT?', b'0',  1),
+(4, 1, '2010-02-19 02:23:11', '2010-02-19 02:23:11', 'Which of the following is NOT a characteristic of a process?', b'0',  1),
+(5, 1, '2010-02-19 02:28:23', '2010-02-19 02:28:23', 'Which of the following statements about processes is INCORRECT?', b'0', 1),
+(6, 1, '2010-02-19 02:29:51', '2010-02-19 02:29:51', 'What is a RACI model used for?', b'0', 1),
+(7, 1, '2010-02-19 02:30:56', '2010-02-19 02:30:56', 'The group that authorizes changes that must be installed faster than the normal process is called the?', b'0',  1),
+(8, 1, '2010-02-19 02:32:10', '2010-02-19 02:32:10', 'Contracts relating to an outsourced Data Centre would be managed by?', b'0',  1),
+(9, 1, '2010-02-19 02:32:59', '2010-02-19 02:32:59', 'Which Service Design process makes the most use of data supplied by Demand Management?', b'0',  1),
+(10, 1, '2010-02-19 02:33:56', '2010-02-19 02:33:56', 'Which of the following CANNOT be stored and managed by a tool?', b'0',  1),
+(11, 1, '2010-02-19 02:34:48', '2010-02-19 02:34:48', 'The BEST description of the purpose of Service Operation is?', b'0',  1);
 
 --
 -- loading data for table 'qustion_option'
