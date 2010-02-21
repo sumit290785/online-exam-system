@@ -49,8 +49,6 @@ public class ExamServiceImpl implements ExamService {
 			}
 		}
 		return 	(exam.getCategory().getTotalScore()/exam.getCategory().getTotalQuestions())*passedQuestion;
-
-
 	}
 	
 
@@ -102,10 +100,64 @@ public class ExamServiceImpl implements ExamService {
 	}
 
 
-	public Question getQuestion(int examID, int seqNUM, Boolean isLAST) {
+	public Answer getQuestion(int examID, int seqNUM, Boolean isLAST) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		isLAST = Boolean.FALSE;
+		Answer answer = answerDAO.findByExamIDAndSeqNUM(examID, seqNUM); 
+		Exam exam = examDAO.findById(examID, false);
+		if (exam.getCategory().getTotalQuestions()==seqNUM)
+			isLAST = Boolean.TRUE;
+		return answer;
+	}
+
+
+	public AnswerDAO getAnswerDAO() {
+		return answerDAO;
+	}
+
+
+	public void setAnswerDAO(AnswerDAO answerDAO) {
+		this.answerDAO = answerDAO;
+	}
+
+
+	public CategoryDAO getCategoryDAO() {
+		return categoryDAO;
+	}
+
+
+	public void setCategoryDAO(CategoryDAO categoryDAO) {
+		this.categoryDAO = categoryDAO;
+	}
+
+
+	public OptionDAO getOptionDAO() {
+		return optionDAO;
+	}
+
+
+	public void setOptionDAO(OptionDAO optionDAO) {
+		this.optionDAO = optionDAO;
+	}
+
+
+	public QuestionDAO getQuestionDAO() {
+		return questionDAO;
+	}
+
+
+	public void setQuestionDAO(QuestionDAO questionDAO) {
+		this.questionDAO = questionDAO;
+	}
+
+
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
 	}
 
 }
