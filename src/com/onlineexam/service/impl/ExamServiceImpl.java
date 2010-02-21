@@ -63,7 +63,7 @@ public class ExamServiceImpl implements ExamService {
 		if (questionList.size()<category.getTotalQuestions()){
 			return null;
 		}
-		List<Answer> answerList = answerDAO.createAnswers(questionList);
+		List<Answer> answerList = answerDAO.initialAnswers(questionList);
 		Exam exam = examDAO.createExam(category, user, answerList);
 		return exam;
 	}
