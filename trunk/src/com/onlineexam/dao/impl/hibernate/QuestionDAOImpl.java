@@ -48,7 +48,8 @@ public class QuestionDAOImpl extends GenericDAOImpl<Question> implements Questio
 		List<Option> correctLst = new ArrayList();
 		for (int i=0;i<optionLst.size();i++){
 			Option option = optionLst.get(i);
-			if (option.isCorrect()){correctLst.add(option);}			
+			if (option.isCorrect()){
+				correctLst.add(option);}			
 		}
 		return correctLst;
 	}

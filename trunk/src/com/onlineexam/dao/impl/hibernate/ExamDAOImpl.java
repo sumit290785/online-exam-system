@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Property;
+
 import com.onlineexam.dao.ExamDAO;
 import com.onlineexam.dao.UserDAO;
 import com.onlineexam.domain.Answer;
@@ -30,5 +33,4 @@ public class ExamDAOImpl extends GenericDAOImpl<Exam> implements ExamDAO {
 		this.makePersistent(exam);
 		return exam;		
 	}
-
 }
