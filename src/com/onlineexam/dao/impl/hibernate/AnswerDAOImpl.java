@@ -34,9 +34,7 @@ public class AnswerDAOImpl extends GenericDAOImpl<Answer> implements AnswerDAO {
 
 	public Answer findByExamIDAndSeqNUM(int examID, int seqNUM) {
 		// TODO Auto-generated method stub
-		DetachedCriteria query =  DetachedCriteria.forClass(this.getEntityBeanType()).add(Property.forName("sequenceId").eq(seqNUM));
-		List<Answer> result = this.executeQuery(query);
-		return result.size()>0?result.get(0):null;
+		return(Answer)this.getEntityManager().createQuery("select a from Exam e,Answer a where a.id = e.answers.id and e.id ="+examID+" and a.sequenceId = "+seqNUM).getSingleResult();
 	}
 
 }
