@@ -79,7 +79,7 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 	@Override
 	public T findById(int id, boolean lock) {
 		T entity;
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.getEntityManager().getTransaction();
 		tx.begin();
 		if (lock) {
 			entity = getEntityManager().find(getEntityBeanType(), id);
