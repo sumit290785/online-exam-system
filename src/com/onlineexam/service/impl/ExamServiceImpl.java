@@ -44,11 +44,12 @@ public class ExamServiceImpl implements ExamService {
 		int passedQuestion =0;
 		for (int i=0;i<answerLst.size();i++){
 			Answer answer = answerLst.get(i);
-			if (answer.getAnswers().equals(questionDAO.getCorrectOptions(answer.getQuestion()))){
+			List stuAnswerLst = new ArrayList(answer.getAnswers());
+			if (stuAnswerLst.equals(questionDAO.getCorrectOptions(answer.getQuestion()))){
 				passedQuestion++;
 			}
 		}
-		return 	(exam.getCategory().getTotalScore()/exam.getCategory().getTotalQuestions())*passedQuestion;
+		return 	Math.round((exam.getCategory().getTotalScore()/exam.getCategory().getTotalQuestions())*passedQuestion);
 	}
 	
 
