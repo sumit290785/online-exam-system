@@ -14,7 +14,7 @@ import com.onlineexam.util.FacesUtil;
 /**
  * @author Joel Tsai
  */
-public final class LoginForm {
+public final class LoginBean {
 	private String password;
 	private String userId;
 

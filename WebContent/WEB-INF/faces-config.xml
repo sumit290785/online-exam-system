@@ -44,8 +44,8 @@
               version="1.2">
   	<managed-bean>
 		<managed-bean-name>login</managed-bean-name>
-		<managed-bean-class>com.onlineexam.web.LoginForm</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-class>com.onlineexam.web.LoginBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
 			<property-name>userId</property-name>
 			<null-value />
@@ -98,7 +98,13 @@
   		<managed-bean-class>com.onlineexam.web.ManageCategoryForm</managed-bean-class>
   		<managed-bean-scope>request</managed-bean-scope>
   	</managed-bean>	
-	
+
+	<managed-bean>
+		<managed-bean-name>addQuestion</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.AddQuestionForm</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
 	<navigation-rule>
 		<from-view-id>/pages/login.jsp</from-view-id>
 		<navigation-case>
