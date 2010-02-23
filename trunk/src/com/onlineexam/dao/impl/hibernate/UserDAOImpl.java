@@ -28,8 +28,6 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements
 		Query q  = this.getEntityManager().createQuery("SELECT u FROM User u where u.username = ?1");
 		q.setParameter(1, userName);
 		User user  = (User) q.getSingleResult();
-		System.out.println("**********************user:" + user);
-		
 		return user;
 	}
 

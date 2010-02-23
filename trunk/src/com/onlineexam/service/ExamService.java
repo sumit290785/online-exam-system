@@ -5,10 +5,8 @@
 package com.onlineexam.service;
 
 import com.onlineexam.domain.Answer;
-import com.onlineexam.domain.Category;
 import com.onlineexam.domain.Exam;
-import com.onlineexam.domain.Question;
-import com.onlineexam.domain.User;
+import com.onlineexam.util.InterBoolean;
 
 /**
  * @author zhujoe
@@ -22,5 +20,5 @@ public interface ExamService {
 	
 	public Answer submitAnswer(int answerID, int... optionID);
 
-	public Answer getQuestion(int examID,int seqNUM,Boolean isLAST);
+	public Answer getQuestion(int examID,int seqNUM,InterBoolean isLAST);
 }

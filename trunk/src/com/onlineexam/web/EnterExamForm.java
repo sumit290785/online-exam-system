@@ -6,6 +6,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.onlineexam.domain.Exam;
+import com.onlineexam.main.ServiceHandler;
+import com.onlineexam.service.ExamService;
 import com.onlineexam.util.ExamTerminatorUtil;
 import com.onlineexam.util.FacesUtil;
 
@@ -19,9 +22,15 @@ public class EnterExamForm {
 	
 	/** The exam time, based on minutes. */
 	private int examTime;
+	
 	public String takeExam() {
+
 		System.out.println("ready to take exam:" + categoryId);
-		examTime = 1;
+		ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
+		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
+		//TODO: use categoryId instead
+		Exam exam = examService.createExam(loginBean.getUserId(), 1);
+		examTime = 120;
 		ExamTerminatorTask ett = new ExamTerminatorTask();
 		ett.setRequest(FacesUtil.getServletRequest());
 		ett.setResponse(FacesUtil.getServletResponse());

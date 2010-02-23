@@ -2,11 +2,14 @@
 package com.onlineexam.web;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.model.SelectItem;
+
 import com.onlineexam.domain.Category;
+import com.onlineexam.main.ServiceHandler;
+import com.onlineexam.service.AccountService;
 import com.onlineexam.util.FacesUtil;
 
 /**
@@ -17,34 +20,17 @@ public class SelectCategoryForm {
 	
 	private String categoryId;
 	
-	private List<Category> categories;
+	private String categoryName;
 	
-	private Map<String, String> categoryMap;
-	
-	public SelectCategoryForm() {
-		//TODO: use actual services
-		Category c1 = new Category("Advanced Software Engineering", 100, 40, 60, 120);
-		Category c2 = new Category("Project Management", 100, 40, 60, 120);
-		Category c3 = new Category("Advanced UML", 100, 40, 60, 120);
-		Category c4 = new Category("Data Structure and Algorithm", 100, 40, 60, 120);
-		List<Category> categories = new ArrayList<Category>();
-		categories.add(c1);
-		categories.add(c2);
-		categories.add(c3);
-		categories.add(c4);
-		this.categories = categories;
-		
-		categoryMap = new HashMap<String, String>();
-		categoryMap.put("Advanced Software Engineering", "Advanced Software Engineering");
-		categoryMap.put("Project Management", "Project Management");
-		categoryMap.put("Advanced UML", "Advanced UML");
-		categoryMap.put("Data Structure and Algorithm", "Data Structure and Algorithm");
-		
-	}
+	private List<SelectItem> categoryItems = new ArrayList<SelectItem>();
 	
 	public String showCategory() {
-		System.out.println("****" + categoryId);
-		FacesUtil.getServletRequest().setAttribute("categoryId", categoryId);
+		for (SelectItem ci : categoryItems) {
+			if (ci.getValue().toString().equals(categoryId)) {
+				categoryName = ci.getLabel();
+			}
+		}
+		//FacesUtil.getServletRequest().setAttribute("categoryId", categoryId);
 		return "ENTER_EXAM";
 	}
 
@@ -63,32 +49,33 @@ public class SelectCategoryForm {
 	}
 
 	/**
-	 * @return the categories
+	 * @return the categoryName
 	 */
-	public List<Category> getCategories() {
-		return categories;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
 	/**
-	 * @param categories the categories to set
+	 * @param categoryName the categoryName to set
 	 */
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	/**
-	 * @return the categoryMap
+	 * @return the categoryItems
 	 */
-	public Map<String, String> getCategoryMap() {
-		return categoryMap;
+	public List<SelectItem> getCategoryItems() {
+		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
+		AccountService accountService = (AccountService) ServiceHandler.getInstance().getService("accountService");
+		List<Category> categories = accountService.getCategories(loginBean.getUserId());
+		for (Category category : categories) {
+			categoryItems.add(new SelectItem(category.getId(), category.getCategoryName()));
+		}
+		return categoryItems;
 	}
 
-	/**
-	 * @param categoryMap the categoryMap to set
-	 */
-	public void setCategoryMap(Map<String, String> categoryMap) {
-		this.categoryMap = categoryMap;
-	}
+
 	
 	
 

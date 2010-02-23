@@ -7,6 +7,6 @@ package com.onlineexam.service;
  */
 public interface LoginService {
 	
-	public boolean checkUser(String user, String passwd);
+	public boolean checkUser(String user, String passwd) throws Exception;
 
 }

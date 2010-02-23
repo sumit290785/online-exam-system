@@ -36,6 +36,9 @@
     <td align="center" valign="middle"><table width="400" border="0">
         <tr>
           <td><table width="400" border="0">
+          <tr><td>&nbsp;</td>
+          <td align="left"><FONT color="red"><h:outputText value="用户名或密码错误" rendered="#{login.loginFailed}" /></FONT></td>
+          </tr>
             <tr>
               <td width="120" align="right" class="USS">
               		<h:outputLabel for="userId">
@@ -44,10 +47,7 @@
 
              </td>
               <td width="264" align="left">&nbsp;
-              		<h:inputText id="userId" value="#{login.userId}">
-			<f:validateLength maximum="20"
-                                  minimum="2"/>
-        </h:inputText>
+              		<h:inputText id="userId" value="#{login.userId}"></h:inputText>
               </td>
             </tr>
           </table></td>
@@ -69,8 +69,8 @@
         <tr>
           <td><table width="400" border="0">
             <tr>
-              <td width="234" align="center"><a href="" class="USS">忘记密码?</a></td>
-              <td width="156"><h:commandButton action="#{login.login}" image="Images/welcome/logon.png" value="Login" /></td>
+              <td width="234">&nbsp;</td>
+              <td width="156" align="left"><h:commandButton action="#{login.login}" image="Images/welcome/logon.png" value="Login" /></td>
             </tr>
           </table></td>
         </tr>
