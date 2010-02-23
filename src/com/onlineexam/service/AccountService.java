@@ -4,6 +4,9 @@
  */
 package com.onlineexam.service;
 
+import java.util.List;
+
+import com.onlineexam.domain.Category;
 import com.onlineexam.domain.User;
 
 /**
@@ -18,4 +21,5 @@ public interface AccountService {
 	
 	public User getUserByID(int ID);
 	
+	public List<Category> getCategories(String userName);
 }

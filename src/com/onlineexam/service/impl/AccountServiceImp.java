@@ -4,7 +4,11 @@
  */
 package com.onlineexam.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.onlineexam.dao.UserDAO;
+import com.onlineexam.domain.Category;
 import com.onlineexam.domain.User;
 import com.onlineexam.service.AccountService;
 
@@ -44,6 +48,12 @@ public class AccountServiceImp implements AccountService {
 	@Override
 	public User getUserByID(int ID) {
 		return userDAO.getUserByID(ID);
+	}
+	@Override
+	public List<Category> getCategories(String userName) {
+		// TODO Auto-generated method stub
+		User user = this.getUser(userName);
+		return new ArrayList<Category>(user.getCategoryTobeExamed());
 	}
 
 
