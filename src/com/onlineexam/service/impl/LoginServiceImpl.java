@@ -13,7 +13,7 @@ public class LoginServiceImpl implements LoginService {
 
 	private UserDAO userDAO;
 	
-	public boolean checkUser(String userName, String passwd) {
+	public boolean checkUser(String userName, String passwd) throws Exception {
 
 		User user = userDAO.getUser(userName);
 		String userPasswd = user.getPassword();

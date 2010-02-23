@@ -64,6 +64,10 @@
 			<property-name>categoryId</property-name>
 			<null-value />
 		</managed-property>
+  		<managed-property>
+			<property-name>categoryName</property-name>
+			<null-value />
+		</managed-property>
   	</managed-bean>
   	
   	<managed-bean>

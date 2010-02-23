@@ -38,7 +38,7 @@
 					<tr>
 						<td width="250" valign="middle" class="USS"><span class="USS">
 						<h:selectOneRadio value="#{selectCategory.categoryId}">
-							<f:selectItems value="#{selectCategory.categoryMap}" /><br>
+							<f:selectItems value="#{selectCategory.categoryItems}" />
 						</h:selectOneRadio></span></td>
 					</tr>
 					<tr>

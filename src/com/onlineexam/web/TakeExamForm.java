@@ -3,12 +3,20 @@
  */
 package com.onlineexam.web;
 
-import java.util.Map;
-import java.util.TimerTask;
-import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+import javax.faces.model.SelectItem;
+
+import com.onlineexam.domain.Answer;
+import com.onlineexam.domain.Option;
+import com.onlineexam.domain.Question;
+import com.onlineexam.main.ServiceHandler;
+import com.onlineexam.service.ExamService;
 import com.onlineexam.util.ExamTerminatorUtil;
 import com.onlineexam.util.FacesUtil;
+import com.onlineexam.util.InterBoolean;
 
 /**
  * @author Joel Tsai
@@ -16,57 +24,78 @@ import com.onlineexam.util.FacesUtil;
  */
 public class TakeExamForm {
 	
-	private Map<String, String> optionMap;
-	
 	private String questionName;
 	
 	private String questionId;
 	
 	private String answer;
+	private int answerId;
 	
-	private int questionNumber;
+	private int questionNumber = 1;
 	
 	private boolean fstQuestion;
 	private boolean lastQuesion;
 
-	public TakeExamForm() {
-		questionName = "sdfdsfdsfsdfsdfsdfsdfsdf";
-		optionMap = new TreeMap<String, String>();
-		optionMap.put("《COSMOPOLITAN》的内容", "1");
-		optionMap.put("《COSMOPOLITAN》的发行情况", "2");
-		optionMap.put("《COSMOPOLITAN》现在有48个版本", "3");
-		optionMap.put("10年03月刊封面 Carrie Underwood(凯莉·安德伍德", "4");
-		fstQuestion = false;
-		lastQuesion = true;
-		questionNumber = 40;
+	private List<SelectItem> optionItems = new ArrayList<SelectItem>();
+	
+	public TakeExamForm() {	
+		fetchQuestion();
 	}
-
+	
 	public String showPreQuest() {
-
+		questionNumber--;
+		fetchQuestion();
+		setPassedTime();
+		submitAnswer();
 		return "";
 	}
 	
 	public String showNxtQuest() {
+		questionNumber++;
+		fetchQuestion();
+		setPassedTime();
+		submitAnswer();
 		System.out.println("answer:" + answer);
-		FacesUtil.getServletRequest().setAttribute("passedTime", String.valueOf(ExamTerminatorUtil.getCurrentTerminatorRemainingTime()));
 		return "";
 	}
 
 	public String finish() {
 		return "FINISH_EXAM";
 	}
-	/**
-	 * @return the optionMap
-	 */
-	public Map<String, String> getOptionMap() {
-		return optionMap;
-	}
 
-	/**
-	 * @param optionMap the optionMap to set
-	 */
-	public void setOptionMap(Map<String, String> optionMap) {
-		this.optionMap = optionMap;
+	private void submitAnswer() {
+		if (answer != null && !"".equals(answer)) {
+			ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
+			examService.submitAnswer(answerId, Integer.parseInt(answer));
+		}
+	}
+	private void setPassedTime() {
+		FacesUtil.getServletRequest().setAttribute("passedTime", String.valueOf(ExamTerminatorUtil.getCurrentTerminatorRemainingTime()));
+	}
+	
+	private void fetchQuestion() {
+		ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
+		InterBoolean lastQuestionIndicator = new InterBoolean();
+		Answer answer = examService.getQuestion(1, questionNumber, lastQuestionIndicator);
+		if (lastQuestionIndicator.isInterBoolean()) {
+			lastQuesion = true;
+		} else {
+			lastQuesion = false;
+		}
+		answerId = answer.getId();
+		System.out.println("----is last question:" + lastQuesion);
+		Question question = answer.getQuestion();
+		questionName = question.getQuestionContent();
+		questionId = String.valueOf(question.getId());
+		Set<Option> options = question.getOptions();
+		for (Option option : options) {
+			optionItems.add(new SelectItem(option.getId(),option.getOptionContent()));
+		}
+		if (questionNumber == 1) {
+			fstQuestion = true;
+		} else {
+			fstQuestion = false;
+		}
 	}
 
 	/**
@@ -125,6 +154,9 @@ public class TakeExamForm {
 		this.fstQuestion = fstQuestion;
 	}
 
+
+
+
 	/**
 	 * @return the lastQuesion
 	 */
@@ -153,5 +185,18 @@ public class TakeExamForm {
 		this.questionNumber = questionNumber;
 	}
 
-	
+	/**
+	 * @return the optionItems
+	 */
+	public List<SelectItem> getOptionItems() {
+		return optionItems;
+	}
+
+	/**
+	 * @param optionItems the optionItems to set
+	 */
+	public void setOptionItems(List<SelectItem> optionItems) {
+		this.optionItems = optionItems;
+	}
+
 }

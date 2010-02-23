@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.onlineexam.dao.AnswerDAO;
 import com.onlineexam.dao.CategoryDAO;
@@ -23,6 +22,7 @@ import com.onlineexam.domain.Option;
 import com.onlineexam.domain.Question;
 import com.onlineexam.domain.User;
 import com.onlineexam.service.ExamService;
+import com.onlineexam.util.InterBoolean;
 
 /**
  * @author zhujoe
@@ -101,13 +101,13 @@ public class ExamServiceImpl implements ExamService {
 	}
 
 
-	public Answer getQuestion(int examID, int seqNUM, Boolean isLAST) {
+	public Answer getQuestion(int examID, int seqNUM, InterBoolean isLAST) {
 		// TODO Auto-generated method stub
-		isLAST = Boolean.FALSE;
+		isLAST.setInterBoolean(Boolean.FALSE);
 		Answer answer = answerDAO.findByExamIDAndSeqNUM(examID, seqNUM); 
 		Exam exam = examDAO.findById(examID, false);
 		if (exam.getCategory().getTotalQuestions()==seqNUM)
-			isLAST = Boolean.TRUE;
+			isLAST.setInterBoolean(Boolean.TRUE);
 		return answer;
 	}
 

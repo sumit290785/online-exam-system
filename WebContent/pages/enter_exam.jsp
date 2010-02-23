@@ -26,7 +26,7 @@
 		<table width="500" border="0" align="center" cellpadding="0"
 			cellspacing="0" class="USS">
 			<tr>
-				<td>你选择的考试科目是： <h:outputText value="#{categoryId}" /></td>
+				<td>你选择的考试科目是： <h:outputText value="#{selectCategory.categoryName}" /></td>
 			</tr>
 			<tr>
 				<td align="center">&nbsp;</td>

@@ -60,7 +60,7 @@
 					</tr>
 					<tr>
 						<td>&nbsp; <h:selectOneRadio value="#{takeExam.answer}">
-							<f:selectItems value="#{takeExam.optionMap}" />
+							<f:selectItems value="#{takeExam.optionItems}" />
 						</h:selectOneRadio></td>
 					</tr>
 				</table>
