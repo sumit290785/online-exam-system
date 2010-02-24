@@ -1,6 +1,8 @@
 package com.onlineexam.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.onlineexam.dao.CategoryDAO;
 import com.onlineexam.dao.QuestionDAO;
@@ -87,6 +89,13 @@ public class QuestionServiceImpl implements QuestionService {
 
 	public void setQuestionDAO(QuestionDAO questionDAO) {
 		this.questionDAO = questionDAO;
+	}
+
+	@Override
+	public List<Category> getAllCategories() {
+		// TODO Auto-generated method stub
+		List<Category> result = categoryDAO.findAll();
+		return result;
 	}
 	
 }
