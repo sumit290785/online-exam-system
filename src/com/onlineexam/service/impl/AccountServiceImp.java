@@ -55,6 +55,10 @@ public class AccountServiceImp implements AccountService {
 		User user = this.getUser(userName);
 		return new ArrayList<Category>(user.getCategoryTobeExamed());
 	}
+	@Override
+	public List<User> getAllUsers() {
+		return userDAO.findAll();
+	}
 
 
 	
