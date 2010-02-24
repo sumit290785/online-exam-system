@@ -82,6 +82,7 @@ public final class LoginBean {
 			retureValue = "failure";
 		}
 		else {
+			FacesUtil.getServletRequest().getSession(true).setAttribute("user", userId);
 			retureValue =  "success";
 		}
 		return retureValue;

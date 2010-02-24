@@ -78,7 +78,7 @@
 					action="#{takeExam.showNxtQuest}"
 					image="Images/testbutton_r1_c2.png" /> <h:commandButton
 					rendered="#{takeExam.lastQuesion}" action="#{takeExam.finish}"
-					value="Íê³É" /></td>
+					image="Images/testbutton_r1_c3.png" /></td>
 			</tr>
 		</table>
 

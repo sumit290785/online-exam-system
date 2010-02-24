@@ -33,12 +33,25 @@ public class ExamTerminatorImpl implements ExamTerminator {
 	}
 
 	/**
-	 * Get the remaining time, milliseconds.
+	 * Get the remaining time, seconds.
 	 * @return the remaining time.
 	 */
 	public int getRemainingTime() {
+		doCalculate();
+		return delayTime - passedTime;
+	}
+	
+	/**
+	 * Get the time passed, seconds.
+	 * @return the time passed.
+	 */
+	public int getTimePassed() {
+		doCalculate();
+		return passedTime;
+	}
+	
+	private void doCalculate() {
 		currentTime = System.currentTimeMillis();
 		passedTime = (int) ((currentTime - startTime) / 1000);
-		return delayTime - passedTime;
 	}
 }
