@@ -17,6 +17,8 @@ public interface AccountService {
 	
 	public User getUser(String username);
 	
+	public List<User> getAllUsers();
+	
 	public void save(User user);
 	
 	public User getUserByID(int ID);
