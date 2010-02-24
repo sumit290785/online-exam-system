@@ -1,5 +1,7 @@
 package com.onlineexam.service;
 
+import java.util.List;
+
 import com.onlineexam.domain.Category;
 import com.onlineexam.domain.Question;
 /**
@@ -16,5 +18,6 @@ public interface QuestionService {
 	public Question addQuestion(Question question);
 	public Question updateQuestion(Question question);
 	public void removeQuestion(int questionID);
+	public List<Category> getAllCategories();
 
 }
