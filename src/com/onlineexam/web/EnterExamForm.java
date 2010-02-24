@@ -2,10 +2,6 @@ package com.onlineexam.web;
 
 import java.util.TimerTask;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.onlineexam.domain.Exam;
 import com.onlineexam.main.ServiceHandler;
 import com.onlineexam.service.ExamService;
@@ -24,7 +20,6 @@ public class EnterExamForm {
 	private int examTime;
 	
 	public String takeExam() {
-
 		System.out.println("ready to take exam:" + categoryId);
 		ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
 		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
@@ -32,75 +27,31 @@ public class EnterExamForm {
 		Exam exam = examService.createExam(loginBean.getUserId(), 1);
 		examTime = 120;
 		ExamTerminatorTask ett = new ExamTerminatorTask();
-		ett.setRequest(FacesUtil.getServletRequest());
-		ett.setResponse(FacesUtil.getServletResponse());
-		ett.setServletContext(FacesUtil.getServletContext());
 		ExamTerminatorUtil.startExamTerminatorThread(examTime*60, ett);
 		FacesUtil.getServletRequest().setAttribute("passedTime", String.valueOf(ExamTerminatorUtil.getCurrentTerminatorRemainingTime()));
+		//prepare the first question
+		TakeExamForm takeExam = (TakeExamForm) FacesUtil.getManagedBean("takeExam");
+		takeExam.fetchQuestion();
 		return "TAKE_EXAM";
 	}
 	
     class ExamTerminatorTask extends TimerTask {
     	
-    	private HttpServletRequest request;
-    	private HttpServletResponse response;
-    	private ServletContext servletContext;
+//    	private HttpServletRequest request;
+//    	private HttpServletResponse response;
+//    	private ServletContext servletContext;
 
         public void run() {
-        	try {
-        		servletContext.getRequestDispatcher(
-						"/pages/finish_exam.jsp").forward(
-								request,
-								response);
-			} catch (Exception e) {
-				//TODO:
-				e.printStackTrace();
-			}
+//        	try {
+//        		servletContext.getRequestDispatcher(
+//						"/pages/finish_exam.jsp").forward(
+//								request,
+//								response);
+//			} catch (Exception e) {
+//				//TODO:
+//				e.printStackTrace();
+//			}
         }
-
-		/**
-		 * @return the request
-		 */
-		public HttpServletRequest getRequest() {
-			return request;
-		}
-
-		/**
-		 * @param request the request to set
-		 */
-		public void setRequest(HttpServletRequest request) {
-			this.request = request;
-		}
-
-		/**
-		 * @return the response
-		 */
-		public HttpServletResponse getResponse() {
-			return response;
-		}
-
-		/**
-		 * @param response the response to set
-		 */
-		public void setResponse(HttpServletResponse response) {
-			this.response = response;
-		}
-
-		/**
-		 * @return the servletContext
-		 */
-		public ServletContext getServletContext() {
-			return servletContext;
-		}
-
-		/**
-		 * @param servletContext the servletContext to set
-		 */
-		public void setServletContext(ServletContext servletContext) {
-			this.servletContext = servletContext;
-		}
-        
-        
 
   }
 	public String cancel() {

@@ -56,9 +56,6 @@
 十五、 考试结束后，各院（系）、部要及时组织教师阅卷，评分标准要统一，做到公平、公正。试卷要有专人负责保管，以备查阅，试卷的保存期为三学年。
     </textarea></td>
 			</tr>
-			<script type="text/javascript">
-	onInitialization();
-</script>
 			<tr>
 				<td align="center">&nbsp;</td>
 			</tr>

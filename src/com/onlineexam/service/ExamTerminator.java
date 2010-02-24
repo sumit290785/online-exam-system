@@ -13,5 +13,7 @@ public interface ExamTerminator {
 
 	void stop();
 
-	public int getRemainingTime();
+	int getRemainingTime();
+	
+	int getTimePassed();
 }

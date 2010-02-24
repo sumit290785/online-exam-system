@@ -25,14 +25,27 @@ public class ExamTerminatorUtil {
 	}
 	
 	/**
-	 * Get the remaining time of the current terminator. It's based on milliseconds.
-	 * @return the milliseconds of remaining time.
+	 * Get the remaining time of the current terminator. It's based on seconds.
+	 * @return the seconds of remaining time.
 	 */
 	public static int getCurrentTerminatorRemainingTime() {
+		int remainingTime = 0;
+		ExamTerminator et = threadExamTerminator.get();
+		if (et != null) {
+			remainingTime = et.getRemainingTime();
+		}
+		return remainingTime;
+	}
+	
+	/**
+	 * Get the running time of the current terminator. It's based on seconds.
+	 * @return the seconds of running time.
+	 */	
+	public static int getCurrentTerminatorRuningTime() {
 		int runingTime = 0;
 		ExamTerminator et = threadExamTerminator.get();
 		if (et != null) {
-			runingTime = et.getRemainingTime();
+			runingTime = et.getTimePassed();
 		}
 		return runingTime;
 	}
