@@ -129,10 +129,26 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<from-view-id>/pages/category_edit.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/pages/category_list.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/pages/category_edit.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
+	<navigation-rule>
 		<from-view-id>/pages/login.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>success</from-outcome>
+			<from-outcome>student</from-outcome>
 			<to-view-id>/pages/select_category.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>main</from-outcome>
+			<to-view-id>/pages/manage_main.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>failure</from-outcome>
