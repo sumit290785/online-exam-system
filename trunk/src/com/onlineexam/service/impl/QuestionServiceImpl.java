@@ -67,7 +67,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	public Question getQuestionByID(int ID) {
 		// TODO Auto-generated method stub
-		return null;
+		return questionDAO.findById(ID, false);
 	}
 
 //	public void save(Question question) {
