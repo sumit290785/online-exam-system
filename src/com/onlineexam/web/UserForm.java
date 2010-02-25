@@ -4,8 +4,9 @@ import antlr.collections.List;
 
 public class UserForm {
 	
+	
 	private String userId;
-	private String username;
+	private String username="test";
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -17,6 +18,11 @@ public class UserForm {
 	private String userType;
 	private List Category;
 
+	public String editUser(){
+		this.setUsername("test");
+		return "userEdit";
+	}
+	
 	public String getUserId() {
 		return userId;
 	}

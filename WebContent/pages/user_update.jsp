@@ -5,6 +5,14 @@
 
 <!--内容请放在这里-->
 <h1 align="center">在线考试系统用户添加更新界面</h1>
+
+<f:view>
+<h:form>
+
+name: <h:outputText value="#{user.username}"/>
+
+</h:form>
+</f:view>
 <table align="center">
 
 	<tr height="20">
