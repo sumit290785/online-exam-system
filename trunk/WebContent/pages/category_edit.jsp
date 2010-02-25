@@ -1,61 +1,73 @@
+<%@ include file="header.jsp"%>
+
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>管理科目</title>
-</head>
-<body>
+
+<!--内容请放在这里-->
+<h1 align="center">在线考试系统考试科目添加更新界面</h1>
 <f:view>
 	<h:messages showDetail="#{true}" showSummary="#{true}" />
 	<h:form>
-		<table width="200" border="0">
-			<tr>
-				<td><h:outputText value="科目名称" /></td>
-				<td align="left">&nbsp; <h:inputText
-					value="#{manageCategory.categoryName}" required="true">
-					<f:validateLength maximum="20" minimum="2" />
-				</h:inputText></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="总题数" /></td>
-				<td align="left">&nbsp; <h:inputText
-					value="#{manageCategory.questionCount}" required="true">
-					<f:validateLength maximum="3" minimum="1" />
-				</h:inputText></td>
-			</tr>
-			
-			<tr>
-				<td><h:outputText value="总分" /></td>
-				<td align="left">&nbsp; <h:inputText
+		<table align="center">
+
+	<tr height="20">
+		<td width="100"><h:outputText value="科目名称" />
+		<img align="top"
+			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
+			title="此字段是必填字段"></td>
+		<td><h:inputText value="#{manageCategory.categoryName}" required="true">
+					<f:validateLength maximum="20" minimum="2" />		
+			</h:inputText></td>
+	</tr>
+	<tr height="20">
+		<td width="100"><h:outputText value="题目数量:"/>
+		<img align="top"
+			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
+			title="此字段是必填字段"></td>
+		<td>
+		<h:inputText value="#{manageCategory.questionCount}" required="true">
+					</h:inputText></td>
+	</tr>
+	<tr height="20">
+		<td width="100"><h:outputText value="总分" />		
+		<img align="top"
+			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
+			title="此字段是必填字段"></td>
+		<td><h:inputText
 					value="#{manageCategory.totalScore}" required="true">
 					<f:validateLength maximum="3" minimum="1" />
 				</h:inputText></td>
-			</tr>
-						<tr>
-				<td><h:outputText value="允许时间(分钟)" /></td>
-				<td align="left">&nbsp; <h:inputText
-					value="#{manageCategory.totalTime}" required="true">
+	</tr>
+	<tr height="20">
+		<td width="100"><h:outputText value="允许时间(分钟)" />
+		<img align="top"
+			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
+			title="此字段是必填字段"></td>
+		<td><h:inputText value="#{manageCategory.totalTime}" required="true">
 					<f:validateLength maximum="3" minimum="1" />
 				</h:inputText></td>
-			</tr>
-									<tr>
-				<td><h:outputText value="及格分数" /></td>
-				<td align="left">&nbsp; <h:inputText
+	</tr>
+	<tr height="20">
+		<td width="100"><h:outputText value="及格分数" />
+		<img align="top"
+			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
+			title="此字段是必填字段"></td>
+		<td><h:inputText
 					value="#{manageCategory.passScore}" required="true">
 					<f:validateLength maximum="4" minimum="1" />
 				</h:inputText></td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td><h:commandButton value="保存" action="#{manageCategory.addCategory}"/></td>
-			</tr>
-			<h:inputHidden id="selectedID" value="#{manageCategory.selectedID}"/>
-		</table>
+	</tr>
+	<tr height="20">
+		<td></td>
+		<td>&nbsp;&nbsp;</td>
+		<tr height="20">
+		<td></td>
+		<td>&nbsp;<h:commandButton value="保存" action="#{manageCategory.addCategory}"/>&nbsp;&nbsp;
+		<h:commandButton  type="button" value="返回" onclick="/pages/category_edit.faces"/></td>
+		<h:inputHidden id="selectedID" value="#{manageCategory.selectedID}"/>
+		
+	</tr>
+</table>
 	</h:form>
 </f:view>
-</body>
-</html>
+<%@ include file="bottom.jsp"%>
