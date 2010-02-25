@@ -19,5 +19,5 @@ public interface QuestionService {
 	public Question updateQuestion(Question question);
 	public void removeQuestion(int questionID);
 	public List<Category> getAllCategories();
-
+	public List<Question> getAllQuestions();
 }
