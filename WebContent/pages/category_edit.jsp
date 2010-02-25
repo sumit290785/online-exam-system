@@ -16,36 +16,44 @@
 			<tr>
 				<td><h:outputText value="科目名称" /></td>
 				<td align="left">&nbsp; <h:inputText
-					value="#{manageCategory.categoryName}">
+					value="#{manageCategory.categoryName}" required="true">
 					<f:validateLength maximum="20" minimum="2" />
 				</h:inputText></td>
 			</tr>
 			<tr>
 				<td><h:outputText value="总题数" /></td>
 				<td align="left">&nbsp; <h:inputText
-					value="#{manageCategory.questionCount}">
+					value="#{manageCategory.questionCount}" required="true">
+					<f:validateLength maximum="3" minimum="1" />
+				</h:inputText></td>
+			</tr>
+			
+			<tr>
+				<td><h:outputText value="总分" /></td>
+				<td align="left">&nbsp; <h:inputText
+					value="#{manageCategory.totalScore}" required="true">
 					<f:validateLength maximum="3" minimum="1" />
 				</h:inputText></td>
 			</tr>
 						<tr>
 				<td><h:outputText value="允许时间(分钟)" /></td>
 				<td align="left">&nbsp; <h:inputText
-					value="#{manageCategory.totalTime}">
+					value="#{manageCategory.totalTime}" required="true">
 					<f:validateLength maximum="3" minimum="1" />
 				</h:inputText></td>
 			</tr>
 									<tr>
 				<td><h:outputText value="及格分数" /></td>
 				<td align="left">&nbsp; <h:inputText
-					value="#{manageCategory.passScore}">
+					value="#{manageCategory.passScore}" required="true">
 					<f:validateLength maximum="4" minimum="1" />
 				</h:inputText></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td><h:commandButton action="#{manageCategory.addCategory}"
-					value="保存" /></td>
+				<td><h:commandButton value="保存" action="#{manageCategory.addCategory}"/></td>
 			</tr>
+			<h:inputHidden id="selectedID" value="#{manageCategory.selectedID}"/>
 		</table>
 	</h:form>
 </f:view>
