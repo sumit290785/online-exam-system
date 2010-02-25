@@ -1,7 +1,6 @@
+<%@ include file="header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
 <HTML>
 <HEAD>
 <link href="style/manage.css" rel="stylesheet" type="text/css" />
@@ -14,21 +13,9 @@ document.getElementById("questionForm:selectedID").value=id;
 </script>
 <body>
 
-<!--这里可以作为header.jsp内容-->
-<p>
-<table width="100%">
-<tr>
-<td align="center">
-<img src="Images/logo.png"/>
-</td>
-</tr>
-</table>
-<hr/>
-
-
 <table width = "100%">
 <tr>
-<td align="right">
+<td align="center">
 <!--内容请放在这里-->
 <f:view>
 <h:form id="questionForm">
@@ -60,31 +47,20 @@ document.getElementById("questionForm:selectedID").value=id;
 <h:inputHidden id="selectedID" value="#{questionCategory.selectedID}"/>
 <tr>
 <br>
-<td>
+<td align = "center">
 <h:commandButton value="添加" action="#{questionQuestion.initQuestion}"/>
 </td>
-
+</tr>>
 </h:form>
 </f:view>
 <tr>
 <td>
-</td>
-<td width="20%">
-<a href="manage_main.jsp">回管理主界面</a>
 </td>
 </tr>
 </table>
 <br/>
 
 <!--这里可以作为footer.jsp内容-->
-<p>
-<hr/>
-<table width="100%">
-<tr>
-<td align="center">
-<img src="Images/bottom.jpg"/>
-</td>
-</tr>
-</table>
+<%@ include file="bottom.jsp"%>
 </body>
 </html>
