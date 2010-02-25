@@ -4,7 +4,7 @@
 <table width="100%">
 	<tr>
 		<td></td>
-		<td width="30%"><a href="manage_main.html">回管理主界面</a></td>
+		<td width="30%"><a href="manage_main.jsp">回管理主界面</a></td>
 	</tr>
 </table>
 <hr />
