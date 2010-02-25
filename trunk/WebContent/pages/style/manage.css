@@ -46,6 +46,7 @@ table.recordlist a:hover
   font-family: Lucida Sans, Lucida Sans Unicode, Tahoma, Trebuchet MS, Arial, Verdana;
   font-size: 12px;
   border-width: 1px;
+  text-align: center;
 }
 
 table.recordlist th,
