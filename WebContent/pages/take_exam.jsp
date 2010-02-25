@@ -59,7 +59,7 @@
 						<td>&nbsp;</td>
 					</tr>
 					<tr>
-						<td>&nbsp; <h:selectOneRadio value="#{takeExam.answer}">
+						<td>&nbsp; <h:selectOneRadio value="#{takeExam.answer}" layout="pageDirection">
 							<f:selectItems value="#{takeExam.optionItems}" />
 						</h:selectOneRadio></td>
 					</tr>

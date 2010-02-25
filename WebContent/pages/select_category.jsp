@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>选择考试科目t</title>
+<title>选择考试科目</title>
 <style type="text/css">
 <!--
 .USS {
@@ -37,7 +37,7 @@
 
 					<tr>
 						<td width="250" valign="middle" class="USS"><span class="USS">
-						<h:selectOneRadio value="#{selectCategory.categoryId}">
+						<h:selectOneRadio value="#{selectCategory.categoryId}" layout="pageDirection">
 							<f:selectItems value="#{selectCategory.categoryItems}" />
 						</h:selectOneRadio></span></td>
 					</tr>

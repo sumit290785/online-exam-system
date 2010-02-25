@@ -1,12 +1,8 @@
 package com.onlineexam.web;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
-import com.onlineexam.domain.Category;
 import com.onlineexam.main.ServiceHandler;
 import com.onlineexam.service.LoginService;
 import com.onlineexam.util.FacesUtil;
@@ -19,6 +15,8 @@ public final class LoginBean {
 	private String password;
 	private String userId;
 	private boolean loginFailed = false;
+	
+	private String uniqueLoginInfo;
 
 	// private Action loginAction;
 
@@ -88,6 +86,7 @@ public final class LoginBean {
 			loginFailed = true;
 		}
 		else {
+			uniqueLoginInfo = userId + String.valueOf(System.currentTimeMillis());
 			FacesUtil.getServletRequest().getSession(true).setAttribute("user", userId);
 		}
 		return retureValue;
@@ -111,6 +110,20 @@ public final class LoginBean {
 
 	public void validate(FacesContext context, UIComponent toValidate,
 			Object value) {
+	}
+
+	/**
+	 * @return the uniqueLoginInfo
+	 */
+	public String getUniqueLoginInfo() {
+		return uniqueLoginInfo;
+	}
+
+	/**
+	 * @param uniqueLoginInfo the uniqueLoginInfo to set
+	 */
+	public void setUniqueLoginInfo(String uniqueLoginInfo) {
+		this.uniqueLoginInfo = uniqueLoginInfo;
 	}
 
 }
