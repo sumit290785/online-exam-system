@@ -10,6 +10,7 @@ import com.onlineexam.domain.Category;
 import com.onlineexam.main.ServiceHandler;
 import com.onlineexam.service.LoginService;
 import com.onlineexam.util.FacesUtil;
+import com.onlineexam.util.SystemConstants;
 
 /**
  * @author Joel Tsai
@@ -69,21 +70,25 @@ public final class LoginBean {
 		LoginService loginService = (LoginService) ServiceHandler.getInstance().getService("loginService");
 		// Attempt to login.
 
-		boolean isValid = false;
+		int login_value = 0;
 		try {
-			isValid = loginService.checkUser(userId, password);
+			login_value = loginService.checkUser(userId, password);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 		}
+		switch (login_value){
+		case SystemConstants.LOGIN_AS_ADMIN:{retureValue="main";break;}
+		case SystemConstants.LOGIN_AS_TEACHER:{retureValue="main";break;}
+		case SystemConstants.LOGIN_AS_STUDENT:{retureValue="student";break;}
+		default: retureValue="failure";
+		}
 		// If no such user exists, login fails.
 		// Otherwise, login succeeds.
-		if (isValid == false) {
+		if (login_value <= 0) {
 			loginFailed = true;
-			retureValue = "failure";
 		}
 		else {
 			FacesUtil.getServletRequest().getSession(true).setAttribute("user", userId);
-			retureValue =  "success";
 		}
 		return retureValue;
 	}
