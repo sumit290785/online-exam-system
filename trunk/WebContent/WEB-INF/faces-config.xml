@@ -109,11 +109,6 @@
   		<managed-bean-class>com.onlineexam.domain.Category</managed-bean-class>
   		<managed-bean-scope>request</managed-bean-scope>
   	</managed-bean>	
-	<managed-bean>
-		<managed-bean-name>addQuestion</managed-bean-name>
-		<managed-bean-class>com.onlineexam.web.AddQuestionForm</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
 	
 	<!-- added by echo category manage navigation -->
 	<navigation-rule>
@@ -139,6 +134,46 @@
 			<to-view-id>/pages/category_edit.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>	
+	
+		<!-- management -->
+  	<managed-bean>
+  		<managed-bean-name>manageQuestion</managed-bean-name>
+  		<managed-bean-class>com.onlineexam.web.ManageQuestionForm</managed-bean-class>
+  		<managed-bean-scope>request</managed-bean-scope>
+  	</managed-bean>
+  	
+		<!-- added by echo CategoryEntityBean -->
+  	<managed-bean>
+  		<managed-bean-name>question</managed-bean-name>
+  		<managed-bean-class>com.onlineexam.domain.Question</managed-bean-class>
+  		<managed-bean-scope>request</managed-bean-scope>
+  	</managed-bean>	
+	
+	<!-- added by echo category manage navigation -->
+	<navigation-rule>
+		<from-view-id>/pages/question_list.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/pages/question_list.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/pages/question_edit.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/question_edit.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>list</from-outcome>
+			<to-view-id>/pages/question_list.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/pages/question_edit.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	
 	
 	<navigation-rule>
 		<from-view-id>/pages/login.jsp</from-view-id>
