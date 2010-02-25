@@ -97,5 +97,12 @@ public class QuestionServiceImpl implements QuestionService {
 		List<Category> result = categoryDAO.findAll();
 		return result;
 	}
+
+	@Override
+	public List<Question> getAllQuestions() {
+		// TODO Auto-generated method stub
+		List<Question> result = questionDAO.findAll();
+		return result;
+	}
 	
 }
