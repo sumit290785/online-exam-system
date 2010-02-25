@@ -1,24 +1,33 @@
 package com.onlineexam.util;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimerTask;
 
 import com.onlineexam.service.ExamTerminator;
 import com.onlineexam.service.impl.ExamTerminatorImpl;
+import com.onlineexam.web.LoginBean;
 
 public class ExamTerminatorUtil {
 
-	private static final ThreadLocal<ExamTerminator> threadExamTerminator = new ThreadLocal<ExamTerminator>();
-
+	//private static final ThreadLocal<ExamTerminator> threadExamTerminator = new ThreadLocal<ExamTerminator>();
+	
+	//Temp approach
+	private static final Map<String, ExamTerminator> threadExamTerminator = new HashMap<String, ExamTerminator>();
+	
+	
 	public static void startExamTerminatorThread(int delayTime, TimerTask task) {
 		stopExamTerminatorThread();
 		ExamTerminator et = new ExamTerminatorImpl();
 		et.startTerminator(delayTime, task);
-		threadExamTerminator.set(et);
+		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
+		threadExamTerminator.put(loginBean.getUniqueLoginInfo(), et);
 	}
 
 	public static void stopExamTerminatorThread() {
-		ExamTerminator et = threadExamTerminator.get();
-		threadExamTerminator.set(null);
+		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
+		ExamTerminator et = threadExamTerminator.get(loginBean.getUniqueLoginInfo());
+		threadExamTerminator.remove(loginBean.getUniqueLoginInfo());
 		if (et != null) {
 			et.stop();
 		}
@@ -30,7 +39,8 @@ public class ExamTerminatorUtil {
 	 */
 	public static int getCurrentTerminatorRemainingTime() {
 		int remainingTime = 0;
-		ExamTerminator et = threadExamTerminator.get();
+		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
+		ExamTerminator et = threadExamTerminator.get(loginBean.getUniqueLoginInfo());
 		if (et != null) {
 			remainingTime = et.getRemainingTime();
 		}
@@ -43,7 +53,8 @@ public class ExamTerminatorUtil {
 	 */	
 	public static int getCurrentTerminatorRuningTime() {
 		int runingTime = 0;
-		ExamTerminator et = threadExamTerminator.get();
+		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
+		ExamTerminator et = threadExamTerminator.get(loginBean.getUniqueLoginInfo());
 		if (et != null) {
 			runingTime = et.getTimePassed();
 		}

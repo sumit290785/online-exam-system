@@ -30,7 +30,6 @@ public class SelectCategoryForm {
 				categoryName = ci.getLabel();
 			}
 		}
-		//FacesUtil.getServletRequest().setAttribute("categoryId", categoryId);
 		return "ENTER_EXAM";
 	}
 
@@ -69,6 +68,8 @@ public class SelectCategoryForm {
 		LoginBean loginBean = (LoginBean) FacesUtil.getManagedBean("login");
 		AccountService accountService = (AccountService) ServiceHandler.getInstance().getService("accountService");
 		List<Category> categories = accountService.getCategories(loginBean.getUserId());
+		categoryItems.clear();
+		categoryId = "";
 		for (Category category : categories) {
 			categoryItems.add(new SelectItem(category.getId(), category.getCategoryName()));
 		}

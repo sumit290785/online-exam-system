@@ -61,7 +61,8 @@ public class TakeExamForm {
 
 	public String finish() {
 		ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
-		Exam exam = examService.submitExam(1);
+		EnterExamForm enterExam = (EnterExamForm) FacesUtil.getManagedBean("enterExam");
+		Exam exam = examService.submitExam(enterExam.getExamId());
 		User user = exam.getUser();
 		loginName = user.getUsername();
 		username = user.getFirstName() + " " + user.getLastName();
@@ -90,7 +91,9 @@ public class TakeExamForm {
 	public void fetchQuestion() {
 		ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
 		InterBoolean lastQuestionIndicator = new InterBoolean();
-		Answer answer = examService.getQuestion(1, questionNumber, lastQuestionIndicator);
+		EnterExamForm enterExam = (EnterExamForm) FacesUtil.getManagedBean("enterExam");
+		System.out.println("take exam form, exam id:"  + enterExam.getExamId());
+		Answer answer = examService.getQuestion(enterExam.getExamId(), questionNumber, lastQuestionIndicator);
 		if (lastQuestionIndicator.isInterBoolean()) {
 			lastQuesion = true;
 		} else {
@@ -101,6 +104,7 @@ public class TakeExamForm {
 		questionName = question.getQuestionContent();
 		questionId = String.valueOf(question.getId());
 		Set<Option> options = question.getOptions();
+		optionItems.clear();
 		for (Option option : options) {
 			optionItems.add(new SelectItem(option.getId(),option.getOptionContent()));
 		}

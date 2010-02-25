@@ -61,8 +61,11 @@
 			</tr>
 			<tr>
 				<td align="center"><h:commandButton
-					action="#{enterExam.cancel}" image="Images/home_r1_c1.png" /> <h:commandButton
-					action="#{enterExam.takeExam}" image="Images/home_r1_c2.png" /></td>
+					action="#{enterExam.cancel}" image="Images/home_r1_c1.png" >
+					</h:commandButton>
+					<h:commandButton action="#{enterExam.takeExam}" image="Images/home_r1_c2.png" >
+					</h:commandButton>
+					</td>
 			</tr>
 		</table>
 

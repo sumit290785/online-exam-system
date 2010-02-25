@@ -49,9 +49,9 @@ public class ManageQuestionForm {
 		this.category = category;
 	}
 	
-	public List getQuestionList() {		
-		return qs.getAllQuestions();
-	}
+//	public List getQuestionList() {		
+//		return qs.getAllQuestions();
+//	}
 	
 	public void setQuestionList(List questionList) {
 		this.questionList = questionList;
