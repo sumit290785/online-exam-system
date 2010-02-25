@@ -34,7 +34,7 @@ public class ManageCategoryForm {
 		else
 			category = new Category();
 		category.setCategoryName(categoryName);
-//		category.setExamTime(examTime);
+		category.setExamTime(totalTime);
 		category.setPassedQuestions(passedQuestion);
 		category.setTotalQuestions(questionCount);
 		category.setTotalScore(totalScore);
@@ -63,7 +63,6 @@ public class ManageCategoryForm {
 		this.setQuestionCount(category.getTotalQuestions());
 		this.setSelectedID(this.getSelectedID());
 		return forword_edit;
-
 	}
 
 	public String deleteCategory() {
