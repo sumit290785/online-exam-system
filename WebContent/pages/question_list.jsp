@@ -8,6 +8,7 @@
 </HEAD>
 <script type="text/javascript">
 function selectID(id){
+alert(id);
 document.getElementById("questionForm:selectedID").value=id;
 }
 </script>
@@ -25,7 +26,7 @@ document.getElementById("questionForm:selectedID").value=id;
 <f:facet name="header">
         <h:outputText value="所属科目" />
  </f:facet>
-<h:commandLink value="#{question.category.categoryName}" action="#{questionCategory.editQuestion}"  onclick="selectID('#{category.id}')">
+<h:commandLink value="#{question.category.categoryName}" action="#{manageQuestion.editQuestion}"  onclick="selectID('#{question.id}')">
 </h:commandLink>
 </h:column></td>
 <td>
@@ -33,22 +34,23 @@ document.getElementById("questionForm:selectedID").value=id;
 <f:facet name="header">
         <h:outputText value="题目内容" />
  </f:facet>
-<h:commandLink value="#{question.questionContent}" action="#{questionCategory.editCategory}"  onclick="selectID('#{category.id}')"/>
+<h:commandLink value="#{question.questionContent}" action="#{manageQuestion.editQuestion}"  onclick="selectID('#{question.id}')"/>
 </h:column>
 </td>
 <h:column>
 <f:facet name="header">
         <h:outputText value="操作" />
  </f:facet>
-<h:commandButton value="删除" image= "Images/delete.gif"action="#{questionCategory.deleteQuestion}"  onclick="selectID('#{question.id}')"/>
+<h:commandButton value="删除" image= "Images/delete.gif"action="#{manageQuestion.deleteQuestion}"  onclick="selectID('#{question.id}')"/>
 </h:column>
 </td>
 </h:dataTable>
-<h:inputHidden id="selectedID" value="#{questionCategory.selectedID}"/>
+<h:inputHidden id="selectedID" value="#{manageQuestion.selectedID}"/>
 <tr>
 <br>
 <td align = "center">
-<h:commandButton value="添加" action="#{questionQuestion.initQuestion}"/>
+<h:commandButton value="添加" action="#{manageQuestion.initQuestion}"/>
+
 </td>
 </tr>>
 </h:form>
