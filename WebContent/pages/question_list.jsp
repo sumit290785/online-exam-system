@@ -4,7 +4,7 @@
 <HTML>
 <HEAD>
 <link href="style/manage.css" rel="stylesheet" type="text/css" />
-<TITLE>在线考试系统模板管理界面</TITLE>
+<TITLE>在线考试系统考题管理界面</TITLE>
 </HEAD>
 <script type="text/javascript">
 function selectID(id){
@@ -12,7 +12,7 @@ document.getElementById("questionForm:selectedID").value=id;
 }
 </script>
 <body>
-
+<h1 align = "center">在线考试系统考题管理界面</h1>
 <table width = "100%">
 <tr>
 <td align="center">
@@ -40,7 +40,7 @@ document.getElementById("questionForm:selectedID").value=id;
 <f:facet name="header">
         <h:outputText value="操作" />
  </f:facet>
-<h:commandButton value="删除" action="#{questionCategory.deleteQuestion}"  onclick="selectID('#{question.id}')"/>
+<h:commandButton value="删除" image= "Images/delete.gif"action="#{questionCategory.deleteQuestion}"  onclick="selectID('#{question.id}')"/>
 </h:column>
 </td>
 </h:dataTable>
