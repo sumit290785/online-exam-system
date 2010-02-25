@@ -32,7 +32,7 @@ document.getElementById("categoryForm:selectedID").value=id;
 <!--内容请放在这里-->
 <f:view>
 <h:form id="categoryForm">
-<h:dataTable value="#{manageCategory.categoryList}" var="category" cellpadding="5"  first="0"  width="80%"  summary="This is a JSF code to create dataTable." dir="LTR">
+<h:dataTable value="#{manageCategory.categoryList}" var="category" styleClass="orders" cellpadding="5"  first="0"  width="80%"  summary="This is a JSF code to create dataTable." dir="LTR">
 <td>
 <h:column>
 <f:facet name="header">
@@ -92,7 +92,7 @@ document.getElementById("categoryForm:selectedID").value=id;
 <td>
 </td>
 <td width="20%">
-<a href="manage_main.html">回管理主界面</a>
+<a href="manage_main.jsp">回管理主界面</a>
 </td>
 </tr>
 </table>
