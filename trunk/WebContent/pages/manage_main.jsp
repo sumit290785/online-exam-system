@@ -31,7 +31,7 @@
   <td><br/></td>
 </tr>
 <tr>
-  <td><a href="manage_question.html">考试题库管理</a></td>
+  <td><a href="question_list.faces">考试题库管理</a></td>
 </tr>
 <tr>
   <td><br/></td>
