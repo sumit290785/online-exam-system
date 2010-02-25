@@ -25,7 +25,7 @@
 <td>
 <table border="0">
 <tr>
-  <td><a href="manage_user.html">用户管理</a></td>
+  <td><a href="user_list.faces">用户管理</a></td>
 </tr>
 <tr>
   <td><br/></td>
