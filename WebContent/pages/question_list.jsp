@@ -8,7 +8,6 @@
 </HEAD>
 <script type="text/javascript">
 function selectID(id){
-alert(id);
 document.getElementById("questionForm:selectedID").value=id;
 }
 </script>
@@ -20,7 +19,7 @@ document.getElementById("questionForm:selectedID").value=id;
 <!--内容请放在这里-->
 <f:view>
 <h:form id="questionForm">
-<h:dataTable value="#{manageQuestion.questionList}" var="question"    styleClass="recordList" cellpadding="5"  first="0"  width="80%"  summary="This is a JSF code to create dataTable." dir="LTR">
+<h:dataTable value="#{manageQuestion.questionList}" var="question"    styleClass="recordList" cellpadding="5"  first="0"  width="80%"  rows="200" summary="This is a JSF code to create dataTable." dir="LTR">
 <td>
 <h:column>
 <f:facet name="header">
