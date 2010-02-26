@@ -73,6 +73,10 @@ public class AccountServiceImp implements AccountService {
 	public void delete(User user) {
 		userDAO.makeTransient(user);
 	}
+	@Override
+	public List<User> searchUserByName(String userName) {
+		return userDAO.searchUserByName(userName);
+	}
 
 
 	
