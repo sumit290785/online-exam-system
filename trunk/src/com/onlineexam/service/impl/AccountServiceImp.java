@@ -54,6 +54,7 @@ public class AccountServiceImp implements AccountService {
 	public List<Category> getCategories(String userName) {
 		// TODO Auto-generated method stub
 		User user = this.getUser(userName);
+		if (user.getCategoryTobeExamed()==null) return new ArrayList();
 		List<Category> list = new ArrayList<Category>(user.getCategoryTobeExamed());
 		List<Category> result = new ArrayList<Category>();
 		for (int i=0;i<list.size();i++){
