@@ -27,6 +27,10 @@ public class ManageCategoryForm {
 	private static final String forword_edit = "edit";
 	private String errorMessage = "";
 	
+	public ManageCategoryForm(){
+		this.setCategoryList(qs.getAllCategories());
+	}
+	
 	public String addCategory() {
 		System.out.println("category name:" + categoryName + ";" + "total time:" + totalTime + ";" + "question count:" + questionCount);
 		errorMessage="";
@@ -91,6 +95,11 @@ public class ManageCategoryForm {
 		System.out.println("delteCategory"+selectedID);
 		qs.removeCategory(selectedID);
 		this.setCategoryList(qs.getAllCategories());
+		return forword_list;
+	}
+	
+	public String loadAll(){
+		this.categoryList = qs.getAllCategories();
 		return forword_list;
 	}
 
@@ -164,7 +173,7 @@ public class ManageCategoryForm {
 	}
 
 	public List<Category> getCategoryList() {
-		return qs.getAllCategories();
+		return this.categoryList;
 	}
 
 	public void setCategoryList(List<Category> categoryList) {
