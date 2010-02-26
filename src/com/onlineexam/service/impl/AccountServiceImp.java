@@ -59,6 +59,10 @@ public class AccountServiceImp implements AccountService {
 	public List<User> getAllUsers() {
 		return userDAO.findAll();
 	}
+	@Override
+	public void delete(User user) {
+		userDAO.makeTransient(user);
+	}
 
 
 	
