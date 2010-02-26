@@ -5,7 +5,12 @@
 --
 -- loading data for table 'exam_categorys'
 --
-
+truncate table exam_answers;
+truncate table exam_categorys;
+truncate table questions;
+truncate table qustion_option;
+truncate table users;
+truncate table user_category;
 INSERT INTO exam_categorys (CATEGORY_ID, OBJ_VERSION, CREATED, LASTMODIFIED, CATEGORY_NAME, TOTAL_SCORE, TOTAL_QUESTION, PASSED_SCORE, EXAM_TIME) VALUES
 (1, 0, '2010-02-19 02:02:47', '2010-02-19 02:02:47', 'ITIL 2.0', 100, 10, 6, 0);
 
