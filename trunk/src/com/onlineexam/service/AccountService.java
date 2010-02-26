@@ -26,4 +26,6 @@ public interface AccountService {
 	public void delete(User user);
 	
 	public List<Category> getCategories(String userName);
+	
+	public List<User> searchUserByName(String userName);
 }

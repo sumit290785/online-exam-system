@@ -1,7 +1,8 @@
 package com.onlineexam.web;
 
-import antlr.collections.List;
+import java.util.List;
 
+import com.onlineexam.domain.Category;
 import com.onlineexam.domain.User;
 import com.onlineexam.domain.UserType;
 import com.onlineexam.main.ServiceHandler;
@@ -20,51 +21,9 @@ public class UserForm {
 	private String zipcode;
 	private String city;
 	private String userType;
-	private List Category;
+	private List<Category> category;
 	private String errorMessage = "";
 
-	public String saveUser() {
-		if ("".equals(username) || username == null)
-			errorMessage = errorMessage + "username can't be null!";
-		if ("".equals(password) || username == null)
-			errorMessage = errorMessage + "password can't be null!";
-		User user = new User();
-		user.setUsername(getUsername());
-		user.setPassword(getPassword());
-		if (getFirstName() != null)
-			user.setFirstName(getFirstName());
-		if (getLastName() != null)
-			user.setLastName(getLastName());
-		if (getCity() != null)
-			user.setCity(getCity());
-		if (getEmail() != null)
-			user.setEmail(getEmail());
-		if (getPhone() != null)
-			user.setPhone(getPhone());
-		if (getStreet() != null)
-			user.setStreet(getStreet());
-		if (getUserType().equalsIgnoreCase("admin"))
-			user.setUserType(UserType.ADMIN);
-		if (getUserType().equalsIgnoreCase("student"))
-			user.setUserType(UserType.STUDENT);
-		if (getUserType().equalsIgnoreCase("teacher"))
-			user.setUserType(UserType.TEACHER);
-		try {
-			((AccountService) ServiceHandler.getInstance().getService(
-					"accountService")).save(user);
-		} catch (Exception e) {
-			errorMessage = errorMessage + "username already exist";
-		}
-
-		if (!errorMessage.equals(""))
-			return "userEdit";
-		return "userList";
-	}
-
-	public String editUser() {
-		
-		return "userEdit";
-	}
 
 	public int getUserId() {
 		return userId;
@@ -154,12 +113,12 @@ public class UserForm {
 		this.userType = userType;
 	}
 
-	public List getCategory() {
-		return Category;
+	public List<Category> getCategory() {
+		return category;
 	}
 
-	public void setCategory(List category) {
-		Category = category;
+	public void setCategory(List<Category> category) {
+		this.category = category;
 	}
 
 	public String getErrorMessage() {
