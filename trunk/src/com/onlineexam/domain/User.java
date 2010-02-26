@@ -184,6 +184,10 @@ public class User implements Serializable, Comparable {
 		return version;
 	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	public int getId() {
 		return id;
 	}
