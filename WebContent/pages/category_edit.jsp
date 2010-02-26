@@ -9,7 +9,9 @@
 	<h:messages showDetail="#{true}" showSummary="#{true}" />
 	<h:form>
 		<table align="center">
-
+          <tr height="20">
+          <td colspan="2" align="center"><FONT color="red"><h:outputText value="#{manageCategory.errorMessage}" /></FONT></td>
+          </tr>
 	<tr height="20">
 		<td width="100"><h:outputText value="科目名称" />
 		<img align="top"
@@ -28,6 +30,17 @@
 		<h:inputText value="#{manageCategory.questionCount}" required="true">
 					</h:inputText></td>
 	</tr>
+	
+ 	<tr height="20">
+		<td width="100"><h:outputText value="考核通过题数:"/>
+		<img align="top"
+			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
+			title="此字段是必填字段"></td>
+		<td>
+		<h:inputText value="#{manageCategory.passedQuestion}" required="true">
+					</h:inputText></td>
+	</tr>
+	 
 	<tr height="20">
 		<td width="100"><h:outputText value="总分" />		
 		<img align="top"
@@ -47,23 +60,14 @@
 					<f:validateLength maximum="3" minimum="1" />
 				</h:inputText></td>
 	</tr>
-	<tr height="20">
-		<td width="100"><h:outputText value="及格分数" />
-		<img align="top"
-			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
-			title="此字段是必填字段"></td>
-		<td><h:inputText
-					value="#{manageCategory.passScore}" required="true">
-					<f:validateLength maximum="4" minimum="1" />
-				</h:inputText></td>
-	</tr>
+	
 	<tr height="20">
 		<td></td>
 		<td>&nbsp;&nbsp;</td>
 		<tr height="20">
 		<td></td>
 		<td>&nbsp;<h:commandButton value="保存" action="#{manageCategory.addCategory}"/>&nbsp;&nbsp;
-		<h:commandButton  type="button" value="返回" onclick="/pages/category_edit.faces"/></td>
+		<h:commandButton  type="button" value="返回" /></td>
 		<h:inputHidden id="selectedID" value="#{manageCategory.selectedID}"/>
 		
 	</tr>
