@@ -63,7 +63,7 @@ public class Exam implements Serializable{
 	@JoinColumn(name = "EXAM_ID", nullable = false)
 	private Set<Answer> answers = new HashSet<Answer>();
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID", nullable = false)
 	private Category category;
 	
