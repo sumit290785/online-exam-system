@@ -106,8 +106,9 @@ public class User implements Serializable, Comparable {
 		this.city = city;
 		this.userType = userType;
 	}
-	
-	public User(){}
+
+	public User() {
+	}
 
 	// ********************** Accessor Methods ********************** //
 
@@ -185,6 +186,10 @@ public class User implements Serializable, Comparable {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Date getCreated() {
