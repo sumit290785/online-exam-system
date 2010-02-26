@@ -1,13 +1,17 @@
 package com.onlineexam.web;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
+import com.onlineexam.domain.Category;
 import com.onlineexam.domain.User;
 import com.onlineexam.domain.UserType;
 import com.onlineexam.main.ServiceHandler;
 import com.onlineexam.service.AccountService;
+import com.onlineexam.service.QuestionService;
 
 public class UserListForm {
 
@@ -55,12 +59,19 @@ public class UserListForm {
 	}
 
 	public String saveUser() {
+		System.out.println(currentUser.getUserId());
 		if ("".equals(currentUser.getUsername())
 				|| currentUser.getUsername() == null)
-			currentUser.setErrorMessage("username can't be null!");
+			currentUser.setErrorMessage(currentUser.getErrorMessage()
+					+ "Username can't be null!");
 		if ("".equals(currentUser.getPassword())
 				|| currentUser.getPassword() == null)
-			currentUser.setErrorMessage("password can't be null!");
+			currentUser.setErrorMessage(currentUser.getErrorMessage()
+					+ " Password can't be null!");
+		if (!currentUser.getCategory().isEmpty()
+				&& !currentUser.getUserType().equalsIgnoreCase("student"))
+			currentUser.setErrorMessage(currentUser.getErrorMessage()
+					+ " Only student can add Category!");
 		if (currentUser.getErrorMessage().equals("")) {
 			User user = new User();
 			user.setUsername(currentUser.getUsername());
@@ -85,6 +96,17 @@ public class UserListForm {
 				user.setUserType(UserType.STUDENT);
 			if (currentUser.getUserType().equalsIgnoreCase("teacher"))
 				user.setUserType(UserType.TEACHER);
+			if (!currentUser.getCategory().isEmpty()) {
+				Set<Category> category = new HashSet<Category>();
+				for (String c : currentUser.getCategory()) {
+
+					category.add(((QuestionService) ServiceHandler
+							.getInstance().getService("questionService"))
+							.getCategoryByName(c));
+				}
+				user.setCategoryTobeExamed(category);
+			}
+
 			try {
 				((AccountService) ServiceHandler.getInstance().getService(
 						"accountService")).save(user);
@@ -124,6 +146,11 @@ public class UserListForm {
 			currentUser.setUserType("student");
 			break;
 		}
+		List<String> category = new ArrayList<String>();
+		for (Category c : u.getCategoryTobeExamed()) {
+			category.add(c.getCategoryName());
+		}
+		currentUser.setCategory(category);
 		return "userEdit";
 	}
 

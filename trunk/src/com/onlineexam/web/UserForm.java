@@ -2,13 +2,17 @@ package com.onlineexam.web;
 
 import java.util.List;
 
+import javax.faces.model.SelectItem;
+
 import com.onlineexam.domain.Category;
-import com.onlineexam.domain.User;
-import com.onlineexam.domain.UserType;
 import com.onlineexam.main.ServiceHandler;
-import com.onlineexam.service.AccountService;
+import com.onlineexam.service.QuestionService;
 
 public class UserForm {
+
+	public UserForm() {
+		loadTotalCategory();
+	}
 
 	private int userId;
 	private String username;
@@ -21,9 +25,22 @@ public class UserForm {
 	private String zipcode;
 	private String city;
 	private String userType;
-	private List<Category> category;
+	private List<String> category;
 	private String errorMessage = "";
+	private SelectItem[] totalCategory;
 
+	private void loadTotalCategory() {
+		List<Category> cList = ((QuestionService) ServiceHandler.getInstance()
+				.getService("questionService")).getAllCategories();
+		int m = 0;
+
+		totalCategory = new SelectItem[cList.size()];
+		for (int i = 0; i < cList.size(); i++) {
+			m = i;
+			totalCategory[m] = new SelectItem(cList.get(m).getCategoryName());
+		}
+	}
+	
 
 	public int getUserId() {
 		return userId;
@@ -113,11 +130,11 @@ public class UserForm {
 		this.userType = userType;
 	}
 
-	public List<Category> getCategory() {
+	public List<String> getCategory() {
 		return category;
 	}
 
-	public void setCategory(List<Category> category) {
+	public void setCategory(List<String> category) {
 		this.category = category;
 	}
 
@@ -127,6 +144,14 @@ public class UserForm {
 
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
+	}
+
+	public SelectItem[] getTotalCategory() {
+		return totalCategory;
+	}
+
+	public void setTotalCategory(SelectItem[] totalCategory) {
+		this.totalCategory = totalCategory;
 	}
 
 }
