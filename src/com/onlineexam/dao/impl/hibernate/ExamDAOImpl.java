@@ -30,7 +30,7 @@ public class ExamDAOImpl extends GenericDAOImpl<Exam> implements ExamDAO {
 		exam.setUser(user);
 		exam.setCreated(today);
 		exam.setLastModified(today);
-		this.makePersistent(exam);
+		exam = this.makePersistent(exam);
 		return exam;		
 	}
 }
