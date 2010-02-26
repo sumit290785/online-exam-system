@@ -25,4 +25,5 @@ public interface QuestionService {
 	public Option getOptionByID(int ID);
 	public void removeOption(int ID);
 	public Option updateOption(Option option);
+	public List<Category> getQuestionsByCategory(String name);
 }

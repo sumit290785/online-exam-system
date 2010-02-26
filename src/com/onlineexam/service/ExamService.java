@@ -26,6 +26,8 @@ public interface ExamService {
 	
 	public List<Exam> getAllExams();
 	
+	public List<Exam> getExamsByCategoryName(String categoryName);
+	
 	public void removeExam(int ID);
 
 }
