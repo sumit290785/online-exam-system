@@ -110,7 +110,12 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 	public void makeTransient(T entity) {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
+		try {
 		getEntityManager().remove(entity);
+		} catch (RuntimeException e) {
+			tx.rollback();
+			throw e;
+		}
 		tx.commit();
 
 	}
