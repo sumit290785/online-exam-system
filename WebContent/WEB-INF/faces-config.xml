@@ -206,7 +206,7 @@
 
   		<!-- added by Joe UserBean -->
 	<managed-bean>
-		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-name>userBean</managed-bean-name>
 		<managed-bean-class>com.onlineexam.web.UserForm</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
@@ -215,13 +215,16 @@
 		<managed-bean-class>com.onlineexam.web.UserListForm</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
-
 	<!-- added by Joe user manage navigation -->
 	<navigation-rule>
 		<from-view-id>/pages/user_list.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>userList</from-outcome>
 			<to-view-id>/pages/user_list.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>userEdit</from-outcome>
+			<to-view-id>/pages/user_update.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
