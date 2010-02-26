@@ -8,4 +8,5 @@ import com.onlineexam.domain.Category;
  *
  */
 public interface CategoryDAO extends GenericDAO<Category>{
+	public Category getCategoryByName(String name);
 }
