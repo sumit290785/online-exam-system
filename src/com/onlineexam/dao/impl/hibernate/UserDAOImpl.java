@@ -43,6 +43,25 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements
 		tx.commit();
 		return user;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<User> searchUserByName(String userName) {
+		List<User> users;
+		EntityManager em = getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		User user;
+		try{
+		Query q  = em.createQuery("SELECT u FROM User u where u.username like ?1");
+		q.setParameter(1, "%"+userName+"%");
+		users = q.getResultList();
+		}catch(RuntimeException e){
+			tx.rollback();
+			throw e;
+		}
+		tx.commit();
+		return users;
+	}
 
 	public void save(User user) {
 
