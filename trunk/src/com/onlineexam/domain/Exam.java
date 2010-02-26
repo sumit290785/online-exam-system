@@ -56,6 +56,9 @@ public class Exam implements Serializable{
 	@Column(name = "EXAM_SCORE", nullable = true)
 	private int score;
 	
+	@Column(name = "IS_PASSED", nullable = true)
+	private boolean pass = false;
+	
 	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "EXAM_ID", nullable = false)
 	private Set<Answer> answers = new HashSet<Answer>();
@@ -142,6 +145,12 @@ public class Exam implements Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public boolean isPass() {
+		return pass;
+	}
+	public void setPass(boolean pass) {
+		this.pass = pass;
 	}
 	
 	
