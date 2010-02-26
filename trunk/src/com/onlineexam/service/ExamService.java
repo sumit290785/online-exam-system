@@ -25,5 +25,7 @@ public interface ExamService {
 	public Answer getQuestion(int examID,int seqNUM,InterBoolean isLAST);
 	
 	public List<Exam> getAllExams();
+	
+	public void removeExam(int ID);
 
 }
