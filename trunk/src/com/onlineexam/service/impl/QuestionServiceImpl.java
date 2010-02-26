@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import com.onlineexam.dao.CategoryDAO;
+import com.onlineexam.dao.OptionDAO;
 import com.onlineexam.dao.QuestionDAO;
 import com.onlineexam.domain.Answer;
 import com.onlineexam.domain.Category;
+import com.onlineexam.domain.Option;
 import com.onlineexam.domain.Question;
 import com.onlineexam.service.QuestionService;
 /**
@@ -18,7 +20,7 @@ import com.onlineexam.service.QuestionService;
 public class QuestionServiceImpl implements QuestionService {
 	private QuestionDAO questionDAO;
 	private CategoryDAO categoryDAO;
-	
+	private OptionDAO optionDAO;	
 	public Category addCategory(Category category) {
 		// TODO Auto-generated method stub
 		Date today = new Date();
@@ -103,6 +105,42 @@ public class QuestionServiceImpl implements QuestionService {
 		// TODO Auto-generated method stub
 		List<Question> result = questionDAO.findAll();
 		return result;
+	}
+
+	@Override
+	public Category getCategoryByName(String name) {
+		// TODO Auto-generated method stub
+		return categoryDAO.getCategoryByName(name);
+	}
+
+	@Override
+	public Option getOptionByID(int ID) {
+		// TODO Auto-generated method stub
+		
+		return optionDAO.findById(ID, false);
+	}
+
+	@Override
+	public void removeOption(int ID) {
+		// TODO Auto-generated method stub
+		System.out.println("DELETING"+ID);
+		Option option = optionDAO.findById(ID, false);
+		optionDAO.makeTransient(option);
+		
+	}
+
+	@Override
+	public Option updateOption(Option option) {
+		// TODO Auto-generated method stub
+		return optionDAO.makePersistent(option);
+	}
+
+	public OptionDAO getOptionDAO() {
+		return optionDAO;
+	}
+
+	public void setOptionDAO(OptionDAO optionDAO) {
+		this.optionDAO = optionDAO;
 	}
 	
 }
