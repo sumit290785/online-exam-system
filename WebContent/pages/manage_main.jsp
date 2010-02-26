@@ -1,3 +1,4 @@
+<%@ include file="header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
 	
@@ -7,16 +8,6 @@
 </HEAD>
 <body>
 
-<!--这里可以作为header.jsp内容-->
-<p>
-<table width="100%">
-<tr>
-<td align="center">
-<img src="Images/logo.png"/>
-</td>
-</tr>
-</table>
-<hr/>
 <!--content for management main-->
 <table width = "100%" border="0">
 <tr>
@@ -37,7 +28,7 @@
   <td><br/></td>
 </tr>
 <tr>
-  <td><a href="category_list.faces">考试模板管理</a></td>
+  <td><a href="category_list.faces"/>考试模板管理</td>
 </tr>
 <tr>
   <td><br/></td>
@@ -52,19 +43,9 @@
 </td>
 </tr>
 </table>
-
 <br/>
-
+<%@ include file="bottom.jsp"%>
 <!--这里可以作为footer.jsp内容-->
-<p>
-<hr/>
-<table width="100%">
-<tr>
-<td align="center">
-<img src="Images/bottom.jpg"/>
-</td>
-</tr>
-</table>
 
 </body>
 </html>
