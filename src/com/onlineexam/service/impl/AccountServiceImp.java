@@ -49,12 +49,22 @@ public class AccountServiceImp implements AccountService {
 	public User getUserByID(int ID) {
 		return userDAO.getUserByID(ID);
 	}
+	
 	@Override
 	public List<Category> getCategories(String userName) {
 		// TODO Auto-generated method stub
 		User user = this.getUser(userName);
-		return new ArrayList<Category>(user.getCategoryTobeExamed());
+		List<Category> list = new ArrayList<Category>(user.getCategoryTobeExamed());
+		List<Category> result = new ArrayList<Category>();
+		for (int i=0;i<list.size();i++){
+			Category category = list.get(i);
+			if (category.getTotalQuestions()>=category.getQuestions().size()){
+				result.add(category);
+			}
+		}
+		return result;
 	}
+	
 	@Override
 	public List<User> getAllUsers() {
 		return userDAO.findAll();
