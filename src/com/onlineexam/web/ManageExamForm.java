@@ -14,9 +14,19 @@ public class ManageExamForm {
 			.getService("examService");
 	private List<ExamForm> examList;
 	private String selectedID;
+	private String selectedCategory;
+	private static final String forword_list = "examlist";
 	
-	public List getAllExams(){
-		List<Exam> allExams = es.getAllExams();
+	public ManageExamForm(){
+		this.loadAll();
+	}
+	
+	public void loadAll(){
+		List<Exam> allExams ;
+//		if(selectedCategory!=null&&!selectedCategory.equals(""))
+//		allExams = es.getExamsByCategoryName(selectedCategory);
+//		else
+		allExams= es.getAllExams();
 		examList = new ArrayList();
 		for (int i=0;i<allExams.size();i++){
 			Exam exam = allExams.get(i);
@@ -31,7 +41,6 @@ public class ManageExamForm {
 			ef.setPassed("Failure");
 			examList.add(ef);	
 		}
-		return examList;
 	}
 	
 	
@@ -42,7 +51,6 @@ public class ManageExamForm {
 
 
 	public List<ExamForm> getExamList() {
-		getAllExams();
 		return examList;
 	}
 
@@ -60,5 +68,16 @@ public class ManageExamForm {
 	public void setSelectedID(String selectedID) {
 		this.selectedID = selectedID;
 	}
+
+
+	public String getSelectedCategory() {
+		return selectedCategory;
+	}
+
+
+	public void setSelectedCategory(String selectedCategory) {
+		this.selectedCategory = selectedCategory;
+	}
+
 
 }

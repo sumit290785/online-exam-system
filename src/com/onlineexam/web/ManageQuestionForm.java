@@ -33,6 +33,10 @@ public class ManageQuestionForm {
 	
 	private QuestionService qs = (QuestionService) sh
 			.getService("questionService");
+	
+	public ManageQuestionForm(){
+		this.setQuestionList(qs.getAllQuestions());		
+	}
 
 	public String editQuestion() {
 		Question question = qs.getQuestionByID(selectedID);
@@ -108,6 +112,7 @@ public class ManageQuestionForm {
 			// TODO: handle exception
 		}
 		}
+		this.setQuestionList(qs.getAllQuestions());
 		if (!errorMessage.equals(""))
 			return forword_edit;
 		return forword_list;
@@ -198,7 +203,7 @@ public class ManageQuestionForm {
 	}
 
 	public List getQuestionList() {
-		return qs.getAllQuestions();
+		return this.questionList;
 	}
 
 	public void setQuestionList(List questionList) {
