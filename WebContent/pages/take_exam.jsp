@@ -46,7 +46,7 @@
 		<table width="700" border="1" bordercolor="#000000" align="center"
 			cellpadding="0" cellspacing="0" class="USS">
 			<tr>
-				<td height="40" bgcolor="#000000">&nbsp;<font color="#FFFFFF">第<h:outputText value="#{takeExam.questionNumber}" />题 ||剩余时间<div id="leftTime"></div>
+				<td height="40" bgcolor="#000000">&nbsp;<font color="#FFFFFF">第<h:outputText value="#{takeExam.questionNumber}" />题 &nbsp;剩余时间<span id="leftTime"></span>
 				</font></td>
 			</tr>
 			<tr>

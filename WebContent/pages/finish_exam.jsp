@@ -13,7 +13,7 @@
 	width: 178px;
 	height: 102px;
 	z-index: 1;
-	top: 500px;
+	top: 600px;
 	left: 49%;
 }
 
@@ -45,9 +45,9 @@
 <f:view>
 	<h:form>
 		<div id="Layer1"><h:graphicImage id="pass_image1"
-			url="Images/PASS.png" rendered="#{takeExam.score >= 60}"></h:graphicImage>
+			url="Images/PASS.png" rendered="#{takeExam.passed}"></h:graphicImage>
 		<h:graphicImage id="pass_image2" url="Images/FAIL.png"
-			rendered="#{takeExam.score < 60}"></h:graphicImage></div>
+			rendered="#{!takeExam.passed}"></h:graphicImage></div>
 		<table width="600" border="0" align="center" cellpadding="0"
 			cellspacing="0" class="NOPRINT">
 			<tr>
