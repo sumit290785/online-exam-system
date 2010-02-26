@@ -1,12 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<!-- =========== FULL CONFIGURATION FILE ================================== -->
+	<!--
+		=========== FULL CONFIGURATION FILE ==================================
+	-->
 
 <faces-config xmlns="http://java.sun.com/xml/ns/javaee"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
-              version="1.2">
-  	<managed-bean>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+	<managed-bean>
 		<managed-bean-name>login</managed-bean-name>
 		<managed-bean-class>com.onlineexam.web.LoginBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
@@ -23,65 +25,64 @@
 			<null-value />
 		</managed-property>
 	</managed-bean>
-	
-  	<managed-bean>
-  		<managed-bean-name>selectCategory</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.web.SelectCategoryForm</managed-bean-class>
-  		<managed-bean-scope>session</managed-bean-scope>
-  		<managed-property>
+
+	<managed-bean>
+		<managed-bean-name>selectCategory</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.SelectCategoryForm</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
 			<property-name>categoryId</property-name>
 			<null-value />
 		</managed-property>
-  		<managed-property>
+		<managed-property>
 			<property-name>categoryName</property-name>
 			<null-value />
 		</managed-property>
-  	</managed-bean>
-  	
-  	<managed-bean>
-  		<managed-bean-name>enterExam</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.web.EnterExamForm</managed-bean-class>
-  		<managed-bean-scope>session</managed-bean-scope>
-  		<managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>enterExam</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.EnterExamForm</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
 			<property-name>categoryId</property-name>
 			<null-value />
 		</managed-property>
-  		<managed-property>
+		<managed-property>
 			<property-name>examId</property-name>
 			<value>1</value>
 		</managed-property>
-  	</managed-bean>
+	</managed-bean>
 
-  	<managed-bean>
-  		<managed-bean-name>takeExam</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.web.TakeExamForm</managed-bean-class>
-  		<managed-bean-scope>session</managed-bean-scope>
-  		<managed-property>
+	<managed-bean>
+		<managed-bean-name>takeExam</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.TakeExamForm</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
 			<property-name>questionId</property-name>
 			<null-value />
 		</managed-property>
-  	</managed-bean>
-  	
-  	<managed-bean>
-  		<managed-bean-name>finishExam</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.web.FinishExamForm</managed-bean-class>
-  		<managed-bean-scope>request</managed-bean-scope>
-  	</managed-bean>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>finishExam</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.FinishExamForm</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 
 	<!-- management -->
-  	<managed-bean>
-  		<managed-bean-name>manageCategory</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.web.ManageCategoryForm</managed-bean-class>
-  		<managed-bean-scope>request</managed-bean-scope>
-  	</managed-bean>	
-  	
+	<managed-bean>
+		<managed-bean-name>manageCategory</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.ManageCategoryForm</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
 	<!-- added by echo CategoryEntityBean -->
-  	<managed-bean>
-  		<managed-bean-name>category</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.domain.Category</managed-bean-class>
-  		<managed-bean-scope>request</managed-bean-scope>
-  	</managed-bean>	
-	
+	<managed-bean>
+		<managed-bean-name>category</managed-bean-name>
+		<managed-bean-class>com.onlineexam.domain.Category</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<!-- added by echo category manage navigation -->
 	<navigation-rule>
 		<from-view-id>/pages/category_list.jsp</from-view-id>
@@ -94,7 +95,7 @@
 			<to-view-id>/pages/category_edit.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/category_edit.jsp</from-view-id>
 		<navigation-case>
@@ -105,22 +106,22 @@
 			<from-outcome>edit</from-outcome>
 			<to-view-id>/pages/category_edit.jsp</to-view-id>
 		</navigation-case>
-	</navigation-rule>	
-	
-		<!-- management -->
-  	<managed-bean>
-  		<managed-bean-name>manageQuestion</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.web.ManageQuestionForm</managed-bean-class>
-  		<managed-bean-scope>request</managed-bean-scope>
-  	</managed-bean>
-  	
-		<!-- added by echo CategoryEntityBean -->
-  	<managed-bean>
-  		<managed-bean-name>question</managed-bean-name>
-  		<managed-bean-class>com.onlineexam.domain.Question</managed-bean-class>
-  		<managed-bean-scope>request</managed-bean-scope>
-  	</managed-bean>	
-	
+	</navigation-rule>
+
+	<!-- management -->
+	<managed-bean>
+		<managed-bean-name>manageQuestion</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.ManageQuestionForm</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<!-- added by echo CategoryEntityBean -->
+	<managed-bean>
+		<managed-bean-name>question</managed-bean-name>
+		<managed-bean-class>com.onlineexam.domain.Question</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
 	<!-- added by echo category manage navigation -->
 	<navigation-rule>
 		<from-view-id>/pages/question_list.jsp</from-view-id>
@@ -133,7 +134,7 @@
 			<to-view-id>/pages/question_edit.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/question_edit.jsp</from-view-id>
 		<navigation-case>
@@ -144,9 +145,9 @@
 			<from-outcome>edit</from-outcome>
 			<to-view-id>/pages/question_edit.jsp</to-view-id>
 		</navigation-case>
-	</navigation-rule>	
-	
-	
+	</navigation-rule>
+
+
 	<navigation-rule>
 		<from-view-id>/pages/login.jsp</from-view-id>
 		<navigation-case>
@@ -190,7 +191,6 @@
 			<to-view-id>/pages/finish_exam.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
 	<navigation-rule>
 		<from-view-id>/pages/finish_exam.jsp</from-view-id>
 		<navigation-case>
@@ -206,13 +206,13 @@
 
   		<!-- added by Joe UserBean -->
 	<managed-bean>
-		<managed-bean-name>userBean</managed-bean-name>
-		<managed-bean-class>com.onlineexam.web.UserForm</managed-bean-class>
+		<managed-bean-name>userList</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.UserListForm</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>userList</managed-bean-name>
-		<managed-bean-class>com.onlineexam.web.UserListForm</managed-bean-class>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.UserForm</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<!-- added by Joe user manage navigation -->
@@ -239,5 +239,5 @@
 			<to-view-id>/pages/user_update.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 </faces-config>
