@@ -161,4 +161,11 @@ public class ExamServiceImpl implements ExamService {
 		this.userDAO = userDAO;
 	}
 
+
+	@Override
+	public List<Exam> getAllExams() {
+		// TODO Auto-generated method stub
+		return examDAO.findAll();
+	}
+
 }
