@@ -19,13 +19,13 @@ document.getElementById("questionForm:selectedID").value=id;
 <!--内容请放在这里-->
 <f:view>
 <h:form id="examForm">
-<h:dataTable value="#{manageExam.examList}" var="exam"    styleClass="recordList" cellpadding="5"  first="0"  width="80%"  rows="200" summary="This is a JSF code to create dataTable." dir="LTR">
+<h:dataTable value="#{manageExam.examList}" var="examForm"    styleClass="recordList" cellpadding="5"  first="0"  width="80%"  rows="200" summary="This is a JSF code to create dataTable." dir="LTR">
 <td>
 <h:column>
 <f:facet name="header">
         <h:outputText value="所属科目" />
  </f:facet>
-<h:commandLink value="#{exam.category}"  onclick="selectID('#{exam.id}')">
+<h:commandLink value="#{examForm.category}"  onclick="selectID('#{examForm.id}')">
 </h:commandLink>
 </h:column></td>
 <td>
@@ -33,7 +33,7 @@ document.getElementById("questionForm:selectedID").value=id;
 <f:facet name="header">
         <h:outputText value="用户名" />
  </f:facet>
-<h:commandLink value="#{exam.user}"  onclick="selectID('#{exam.id}')"/>
+<h:commandLink value="#{examForm.user}"  onclick="selectID('#{examForm.id}')"/>
 </h:column>
 </td>
 <h:column>
