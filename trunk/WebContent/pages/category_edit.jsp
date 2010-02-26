@@ -17,8 +17,7 @@
 		<img align="top"
 			src="Images/required_field.gif" border="0" alt="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"
 			title="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"></td>
-		<td><h:inputText value="#{manageCategory.categoryName}" required="true">
-					<f:validateLength maximum="20" minimum="2" />		
+		<td><h:inputText value="#{manageCategory.categoryName}" >		
 			</h:inputText></td>
 	</tr>
 	<tr height="20">
@@ -27,7 +26,7 @@
 			src="Images/required_field.gif" border="0" alt="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"
 			title="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"></td>
 		<td>
-		<h:inputText value="#{manageCategory.questionCount}" required="true">
+		<h:inputText value="#{manageCategory.questionCount}" >
 					</h:inputText></td>
 	</tr>
 	
@@ -37,7 +36,7 @@
 			src="Images/required_field.gif" border="0" alt="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"
 			title="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"></td>
 		<td>
-		<h:inputText value="#{manageCategory.passedQuestion}" required="true">
+		<h:inputText value="#{manageCategory.passedQuestion}" >
 					</h:inputText></td>
 	</tr>
 	 
@@ -47,8 +46,7 @@
 			src="Images/required_field.gif" border="0" alt="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"
 			title="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"></td>
 		<td><h:inputText
-					value="#{manageCategory.totalScore}" required="true">
-					<f:validateLength maximum="3" minimum="1" />
+					value="#{manageCategory.totalScore}" >
 				</h:inputText></td>
 	</tr>
 	<tr height="20">
@@ -56,8 +54,7 @@
 		<img align="top"
 			src="Images/required_field.gif" border="0" alt="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"
 			title="´Ë×Ö¶ÎÊÇ±ØÌî×Ö¶Î"></td>
-		<td><h:inputText value="#{manageCategory.totalTime}" required="true">
-					<f:validateLength maximum="3" minimum="1" />
+		<td><h:inputText value="#{manageCategory.totalTime}" >
 				</h:inputText></td>
 	</tr>
 	
@@ -67,7 +64,7 @@
 		<tr height="20">
 		<td></td>
 		<td>&nbsp;<h:commandButton value="±£´æ" action="#{manageCategory.addCategory}"/>&nbsp;&nbsp;
-		<h:commandButton  type="button" value="·µ»Ø" /></td>
+		<h:commandButton  type="button" value="·µ»Ø" action="list"/></td>
 		<h:inputHidden id="selectedID" value="#{manageCategory.selectedID}"/>
 		
 	</tr>
