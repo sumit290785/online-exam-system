@@ -68,6 +68,7 @@
         LASTMODIFIED datetime not null,
         USED_TIME integer not null,
         EXAM_SCORE integer,
+        IS_PASSED bit,
         USER_ID integer not null,
         CATEGORY_ID integer not null,
         primary key (EXAM_ID)
