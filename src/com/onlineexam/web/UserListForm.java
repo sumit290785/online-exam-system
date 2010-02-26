@@ -74,6 +74,7 @@ public class UserListForm {
 					+ " Only student can add Category!");
 		if (currentUser.getErrorMessage().equals("")) {
 			User user = new User();
+			user.setVersion(1);
 			user.setUsername(currentUser.getUsername());
 			user.setPassword(currentUser.getPassword());
 			if (currentUser.getUserId() != 0)
