@@ -29,6 +29,8 @@ public class ManageQuestionForm {
 	private OptionBean opt5=new OptionBean();
 	private OptionBean opt6=new OptionBean();
 	private ServiceHandler sh = ServiceHandler.getInstance();
+	private String errorMessage = "";
+	
 	private QuestionService qs = (QuestionService) sh
 			.getService("questionService");
 
@@ -57,35 +59,81 @@ public class ManageQuestionForm {
 	}
 
 	public String saveQuestion() {
-		Question question;
-		this.optionList = new ArrayList();
-		if (selectedID > 0) {
-			question = qs.getQuestionByID(selectedID);
-			Category c = qs.getCategoryByName(this.getCategory());
-			question.setCategory(c);
-			updateOption(opt1);
-			updateOption(opt2);
-			updateOption(opt3);
-			updateOption(opt4);
-			updateOption(opt5);
-			updateOption(opt6);
-			question.setOptions(new HashSet(optionList));
-			question = qs.updateQuestion(question);
-		} else {
-			question = new Question();
-			Category c = qs.getCategoryByName(this.getCategory());
-			question.setCategory(c);
-			updateOption(opt1);
-			updateOption(opt2);
-			updateOption(opt3);
-			updateOption(opt4);
-			updateOption(opt5);
-			updateOption(opt6);
-			question.setOptions(new HashSet(optionList));
-			question = qs.addQuestion(question);
+		errorMessage="";
+		if(questionContent!=null&&questionContent.length()==0)
+			errorMessage=errorMessage+"question content can't be null!";
+		List<OptionBean> list = this.getNotEmptlyOptionList();
+		if (list.size()<3){
+			errorMessage=errorMessage+"option counts must be greater than 3!";
 		}
+		boolean isCorrectSet = false;
+		for (int i=0;i<list.size();i++)
+		{
+			if (list.get(i).isCorrect()) {isCorrectSet = true; break;}
+		}
+		if(!isCorrectSet)
+			errorMessage=errorMessage+" at least 1 correct answer must be set!";
+		if (errorMessage.equals("")){
+		try {
+			Question question;
+			this.optionList = new ArrayList();
+			if (selectedID > 0) {
+				question = qs.getQuestionByID(selectedID);
+				Category c = qs.getCategoryByName(this.getCategory());
+				question.setCategory(c);
+				updateOption(opt1);
+				updateOption(opt2);
+				updateOption(opt3);
+				updateOption(opt4);
+				updateOption(opt5);
+				updateOption(opt6);
+				question.setQuestionContent(questionContent);
+				question.setOptions(new HashSet(optionList));
+				question = qs.updateQuestion(question);
+			} else {
+				question = new Question();
+				Category c = qs.getCategoryByName(this.getCategory());
+				question.setCategory(c);
+				updateOption(opt1);
+				updateOption(opt2);
+				updateOption(opt3);
+				updateOption(opt4);
+				updateOption(opt5);
+				updateOption(opt6);
+				question.setOptions(new HashSet(optionList));
+				question.setQuestionContent(questionContent);
+				question = qs.addQuestion(question);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		}
+		if (!errorMessage.equals(""))
+			return forword_edit;
 		return forword_list;
-
+	}
+	
+	private List<OptionBean> getNotEmptlyOptionList(){
+		List<OptionBean> list = new ArrayList<OptionBean>();
+		if (opt1!=null&&opt1.getOption()!=null&&opt1.getOption().length()>0){
+			list.add(opt1);
+		}
+		if (opt2!=null&&opt1.getOption()!=null&&opt2.getOption().length()>0){
+			list.add(opt2);
+		}
+		if (opt3!=null&&opt3.getOption()!=null&&opt3.getOption().length()>0){
+			list.add(opt3);
+		}
+		if (opt4!=null&&opt4.getOption()!=null&&opt4.getOption().length()>0){
+			list.add(opt4);
+		}
+		if (opt5!=null&&opt5.getOption()!=null&&opt5.getOption().length()>0){
+			list.add(opt5);
+		}
+		if (opt6!=null&&opt6.getOption()!=null&&opt6.getOption().length()>0){
+			list.add(opt6);
+		}
+		return list;
 	}
 
 	private void updateOption(OptionBean opt) {
@@ -246,5 +294,13 @@ public class ManageQuestionForm {
 
 	public void setOpt6(OptionBean opt6) {
 		this.opt6 = opt6;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 }
