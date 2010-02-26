@@ -9,10 +9,10 @@
 <f:view>
 
 	<h:form>
-		<font color="red"><h:outputText
-			value="#{userList.currentUser.errorMessage}" /></font>
-		<table align="center">
 
+		<table align="center">
+			<font color="red"><h:outputText
+				value="#{userList.currentUser.errorMessage}" /></font>
 			<tr height="20">
 				<td width="100"><b>用户名:</b><img align="top"
 					src="Images/required_field.gif" border="0" alt="此字段是必填字段"
@@ -76,6 +76,13 @@
 				</h:selectOneMenu></td>
 			</tr>
 			<tr height="20">
+				<td width="100"><b>分配考试科目:</b></td>
+				<td><h:selectManyCheckbox required="false"
+					layout="pageDirection" value="#{userList.currentUser.category}">
+					<f:selectItems value="#{userList.currentUser.totalCategory}" />
+				</h:selectManyCheckbox></td>
+			</tr>
+			<tr height="20">
 				<td></td>
 				<td>&nbsp;&nbsp;</td>
 			</tr>
@@ -86,7 +93,8 @@
 					type="button" value="取消" action="userList" /></td>
 			</tr>
 		</table>
-		<h:inputHidden id="currentUserID" value="#{userList.currentUser.userId}" />
+		<h:inputHidden id="currentUserID"
+			value="#{userList.currentUser.userId}" />
 	</h:form>
 </f:view>
 
