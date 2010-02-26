@@ -22,14 +22,21 @@ public class SelectCategoryForm {
 	
 	private String categoryName;
 	
+	private boolean noCateSeleted = false;
+	
 	private List<SelectItem> categoryItems = new ArrayList<SelectItem>();
 	
 	public String showCategory() {
+		if (categoryId == null || "".equals(categoryId)) {
+			noCateSeleted = true;
+			return "";
+		}
 		for (SelectItem ci : categoryItems) {
 			if (ci.getValue().toString().equals(categoryId)) {
 				categoryName = ci.getLabel();
 			}
 		}
+		noCateSeleted = false;
 		return "ENTER_EXAM";
 	}
 
@@ -59,6 +66,20 @@ public class SelectCategoryForm {
 	 */
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	/**
+	 * @return the noCateSeleted
+	 */
+	public boolean isNoCateSeleted() {
+		return noCateSeleted;
+	}
+
+	/**
+	 * @param noCateSeleted the noCateSeleted to set
+	 */
+	public void setNoCateSeleted(boolean noCateSeleted) {
+		this.noCateSeleted = noCateSeleted;
 	}
 
 	/**
