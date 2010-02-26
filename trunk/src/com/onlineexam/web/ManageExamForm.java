@@ -13,7 +13,7 @@ public class ManageExamForm {
 	private ExamService es = (ExamService) sh
 			.getService("examService");
 	private List<ExamForm> examList;
-	private String examID;
+	private String selectedID;
 	
 	public List getAllExams(){
 		List<Exam> allExams = es.getAllExams();
@@ -25,6 +25,10 @@ public class ManageExamForm {
 			ef.setTotalScore(exam.getScore());
 			ef.setUser(exam.getUser().getUsername());
 			ef.setUserName(exam.getUser().getFirstName()+exam.getUser().getLastName());
+			if(exam.isPass())
+			ef.setPassed("Successs");
+			else
+			ef.setPassed("Failure");
 			examList.add(ef);	
 		}
 		return examList;
@@ -32,6 +36,7 @@ public class ManageExamForm {
 	
 	
 	public String deleteExam(){
+		
 		return "";	
 	}
 
@@ -47,13 +52,13 @@ public class ManageExamForm {
 	}
 
 
-	public String getExamID() {
-		return examID;
+	public String getSelectedID() {
+		return selectedID;
 	}
 
 
-	public void setExamID(String examID) {
-		this.examID = examID;
+	public void setSelectedID(String selectedID) {
+		this.selectedID = selectedID;
 	}
 
 }
