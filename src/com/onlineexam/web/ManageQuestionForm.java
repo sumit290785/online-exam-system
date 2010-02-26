@@ -228,6 +228,12 @@ public class ManageQuestionForm {
 		}
 		return categoryList;
 	}
+	
+	public String deleteQuestion(){
+		qs.removeQuestion(selectedID);
+		this.setQuestionList(qs.getAllQuestions());
+		return this.forword_list;
+	}
 
 	public void setCategoryList(SelectItem[] categoryList) {
 		this.categoryList = categoryList;
