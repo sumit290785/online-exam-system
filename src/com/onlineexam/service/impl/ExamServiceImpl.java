@@ -44,7 +44,10 @@ public class ExamServiceImpl implements ExamService {
 		int passedQuestion =0;
 		for (int i=0;i<answerLst.size();i++){
 			Answer answer = answerLst.get(i);
+//			System.out.println("answerid"+answer.getId());
 			List stuAnswerLst = new ArrayList(answer.getAnswers());
+//			System.out.println("optionid"+((Option)stuAnswerLst.get(0)).getId());
+			List correctOptList = questionDAO.getCorrectOptions(answer.getQuestion());
 			if (stuAnswerLst.equals(questionDAO.getCorrectOptions(answer.getQuestion()))){
 				passedQuestion++;
 			}
@@ -82,7 +85,7 @@ public class ExamServiceImpl implements ExamService {
 		Exam exam = examDAO.findById(examID, false);
 		Date today = new Date();
 		Category category = exam.getCategory();
-		int passedScore = (category.getPassedQuestions()/category.getTotalQuestions())*category.getTotalScore();
+		int passedScore = category.getPassedQuestions()*category.getTotalScore()/category.getTotalQuestions();
 		exam.setLastModified(today);
 		int totalScore = this.caculateScore(exam);
 		exam.setScore(totalScore);
@@ -96,6 +99,7 @@ public class ExamServiceImpl implements ExamService {
 	
 	public Answer submitAnswer(int answerID, int... optionID){
 		Answer answer = answerDAO.findById(answerID, false);
+		System.out.println(answerID+" questionID"+answer.getQuestion().getId()+answer.getQuestion().getQuestionContent());
 		List<Option> optLst = new ArrayList<Option>();
 		for (int id:optionID){
 			Option option = optionDAO.findById(id, false);
@@ -115,6 +119,7 @@ public class ExamServiceImpl implements ExamService {
 		Exam exam = examDAO.findById(examID, false);
 		if (exam.getCategory().getTotalQuestions()==seqNUM)
 			isLAST.setInterBoolean(Boolean.TRUE);
+		System.out.println(answer+" questionID"+answer.getQuestion().getId()+answer.getQuestion().getQuestionContent());
 		return answer;
 	}
 
@@ -180,7 +185,7 @@ public class ExamServiceImpl implements ExamService {
 	public void removeExam(int ID) {
 		// TODO Auto-generated method stub
 		Exam exam = examDAO.findById(ID, false);
-		examDAO.makePersistent(exam);
+		examDAO.makeTransient(exam);
 	}
 
 
