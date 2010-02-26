@@ -58,7 +58,7 @@ public class AccountServiceImp implements AccountService {
 		List<Category> result = new ArrayList<Category>();
 		for (int i=0;i<list.size();i++){
 			Category category = list.get(i);
-			if (category.getTotalQuestions()>=category.getQuestions().size()){
+			if (category.getTotalQuestions()<=category.getQuestions().size()){
 				result.add(category);
 			}
 		}
