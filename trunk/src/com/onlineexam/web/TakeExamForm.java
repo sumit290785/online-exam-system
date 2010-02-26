@@ -37,6 +37,7 @@ public class TakeExamForm {
 	private String loginName;
 	private String username;
 	private String category;
+	private boolean passed;
 	//based on minutes
 	private int passedTime;
 	private int score;
@@ -56,6 +57,7 @@ public class TakeExamForm {
 		fetchQuestion();
 		setPassedTime();
 		submitAnswer();
+		answer = "";
 		return "";
 	}
 
@@ -66,6 +68,7 @@ public class TakeExamForm {
 		User user = exam.getUser();
 		loginName = user.getUsername();
 		username = user.getFirstName() + " " + user.getLastName();
+		passed = exam.isPass();
 		category = exam.getCategory().getCategoryName();
 		passedTime = ExamTerminatorUtil.getCurrentTerminatorRuningTime()/60;
 		score = exam.getScore();
@@ -82,7 +85,6 @@ public class TakeExamForm {
 			ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
 			examService.submitAnswer(answerId, Integer.parseInt(answer));
 		}
-		answer = "";
 	}
 	private void setPassedTime() {
 		FacesUtil.getServletRequest().setAttribute("passedTime", String.valueOf(ExamTerminatorUtil.getCurrentTerminatorRemainingTime()));
@@ -285,6 +287,20 @@ public class TakeExamForm {
 	 */
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
+	}
+
+	/**
+	 * @return the passed
+	 */
+	public boolean isPassed() {
+		return passed;
+	}
+
+	/**
+	 * @param passed the passed to set
+	 */
+	public void setPassed(boolean passed) {
+		this.passed = passed;
 	}
 
 }
