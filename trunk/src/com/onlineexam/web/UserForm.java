@@ -2,11 +2,15 @@ package com.onlineexam.web;
 
 import antlr.collections.List;
 
+import com.onlineexam.domain.User;
+import com.onlineexam.domain.UserType;
+import com.onlineexam.main.ServiceHandler;
+import com.onlineexam.service.AccountService;
+
 public class UserForm {
-	
-	
-	private String userId;
-	private String username="test";
+
+	private int userId;
+	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -17,17 +21,56 @@ public class UserForm {
 	private String city;
 	private String userType;
 	private List Category;
+	private String errorMessage = "";
 
-	public String editUser(){
-		this.setUsername("test");
+	public String saveUser() {
+		if ("".equals(username) || username == null)
+			errorMessage = errorMessage + "username can't be null!";
+		if ("".equals(password) || username == null)
+			errorMessage = errorMessage + "password can't be null!";
+		User user = new User();
+		user.setUsername(getUsername());
+		user.setPassword(getPassword());
+		if (getFirstName() != null)
+			user.setFirstName(getFirstName());
+		if (getLastName() != null)
+			user.setLastName(getLastName());
+		if (getCity() != null)
+			user.setCity(getCity());
+		if (getEmail() != null)
+			user.setEmail(getEmail());
+		if (getPhone() != null)
+			user.setPhone(getPhone());
+		if (getStreet() != null)
+			user.setStreet(getStreet());
+		if (getUserType().equalsIgnoreCase("admin"))
+			user.setUserType(UserType.ADMIN);
+		if (getUserType().equalsIgnoreCase("student"))
+			user.setUserType(UserType.STUDENT);
+		if (getUserType().equalsIgnoreCase("teacher"))
+			user.setUserType(UserType.TEACHER);
+		try {
+			((AccountService) ServiceHandler.getInstance().getService(
+					"accountService")).save(user);
+		} catch (Exception e) {
+			errorMessage = errorMessage + "username already exist";
+		}
+
+		if (!errorMessage.equals(""))
+			return "userEdit";
+		return "userList";
+	}
+
+	public String editUser() {
+		
 		return "userEdit";
 	}
-	
-	public String getUserId() {
+
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -117,6 +160,14 @@ public class UserForm {
 
 	public void setCategory(List category) {
 		Category = category;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 }
