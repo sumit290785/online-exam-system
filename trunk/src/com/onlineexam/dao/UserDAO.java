@@ -4,6 +4,8 @@
  */
 package com.onlineexam.dao;
 
+import java.util.List;
+
 import com.onlineexam.domain.User;
 
 /**
@@ -17,5 +19,7 @@ public interface UserDAO extends GenericDAO<User>{
 	public void save(User user);
 	
 	public User getUserByID(int ID);
+	
+	public List<User> searchUserByName(String userName);
 
 }
