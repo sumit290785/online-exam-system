@@ -8,7 +8,7 @@
 </HEAD>
 <script type="text/javascript">
 function selectID(id){
-document.getElementById("questionForm:selectedID").value=id;
+document.getElementById("examForm:selectedID").value=id;
 }
 </script>
 <body>
@@ -25,15 +25,14 @@ document.getElementById("questionForm:selectedID").value=id;
 <f:facet name="header">
         <h:outputText value="所属科目" />
  </f:facet>
-<h:commandLink value="#{examForm.category}"  onclick="selectID('#{examForm.id}')">
-</h:commandLink>
+<h:commandLink value="#{examForm.category}"/>
 </h:column></td>
 <td>
 <h:column>
 <f:facet name="header">
         <h:outputText value="考生登陆名" />
  </f:facet>
-<h:commandLink value="#{examForm.user}"  onclick="selectID('#{examForm.id}')"/>
+<h:commandLink value="#{examForm.user}" />
 </h:column>
 </td>
 <td>
@@ -41,28 +40,28 @@ document.getElementById("questionForm:selectedID").value=id;
 <f:facet name="header">
         <h:outputText value="考生姓名" />
  </f:facet>
-<h:commandLink value="#{examForm.userName}"  onclick="selectID('#{examForm.id}')"/>
+<h:commandLink value="#{examForm.userName}"/>
 </h:column>
 </td>
 <h:column>
 <f:facet name="header">
         <h:outputText value="考试成绩" />
  </f:facet>
-<h:commandLink value="#{examForm.totalScore}"  onclick="selectID('#{examForm.id}')"/>
+<h:commandLink value="#{examForm.totalScore}"/>
 </h:column>
 </td>
 <h:column>
 <f:facet name="header">
         <h:outputText value="考核结果" />
  </f:facet>
-<h:commandLink value="#{examForm.passed}"  onclick="selectID('#{examForm.id}')"/>
+<h:commandLink value="#{examForm.passed}" />
 </h:column>
 </td>
 <h:column>
 <f:facet name="header">
         <h:outputText value="操作" />
  </f:facet>
-<h:commandButton value="删除" image= "Images/delete.gif"action="#{manageExam.deleteExam}"  onclick="selectID('#{exam.id}')"/>
+<h:commandButton value="删除" image= "Images/delete.gif" action="#{manageExam.deleteExam}"  onclick="selectID('#{examForm.id}')"/>
 </h:column>
 </td>
 </h:dataTable>
