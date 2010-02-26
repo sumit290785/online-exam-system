@@ -13,7 +13,7 @@ public class ManageExamForm {
 	private ExamService es = (ExamService) sh
 			.getService("examService");
 	private List<ExamForm> examList;
-	private String selectedID;
+	private int selectedID;
 	private String selectedCategory;
 	private static final String forword_list = "examlist";
 	
@@ -31,6 +31,7 @@ public class ManageExamForm {
 		for (int i=0;i<allExams.size();i++){
 			Exam exam = allExams.get(i);
 			ExamForm ef = new ExamForm();
+			ef.setId(exam.getId());
 			ef.setCategory(exam.getCategory().getCategoryName());
 			ef.setTotalScore(exam.getScore());
 			ef.setUser(exam.getUser().getUsername());
@@ -45,8 +46,9 @@ public class ManageExamForm {
 	
 	
 	public String deleteExam(){
-		
-		return "";	
+		es.removeExam(selectedID);
+		this.loadAll();
+		return this.forword_list;	
 	}
 
 
@@ -60,12 +62,12 @@ public class ManageExamForm {
 	}
 
 
-	public String getSelectedID() {
+	public int getSelectedID() {
 		return selectedID;
 	}
 
 
-	public void setSelectedID(String selectedID) {
+	public void setSelectedID(int selectedID) {
 		this.selectedID = selectedID;
 	}
 

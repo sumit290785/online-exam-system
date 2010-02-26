@@ -1,6 +1,7 @@
 package com.onlineexam.web;
 
 public class ExamForm {
+	private int id;
 	private String category;
 	private String user;
 	private String userName;
@@ -43,6 +44,12 @@ public class ExamForm {
 	}
 	public void setTotalScore(int totalScore) {
 		this.totalScore = totalScore;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

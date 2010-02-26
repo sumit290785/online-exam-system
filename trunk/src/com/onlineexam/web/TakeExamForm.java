@@ -46,23 +46,24 @@ public class TakeExamForm {
 	
 	public String showPreQuest() {
 		questionNumber--;
+		submitAnswer();
 		fetchQuestion();
 		setPassedTime();
-		submitAnswer();
 		return "";
 	}
 	
 	public String showNxtQuest() {
 		questionNumber++;
+		submitAnswer();
 		fetchQuestion();
 		setPassedTime();
-		submitAnswer();
 		answer = "";
 		return "";
 	}
 
 	public String finish() {
 		ExamService examService = (ExamService) ServiceHandler.getInstance().getService("examService");
+		submitAnswer();
 		EnterExamForm enterExam = (EnterExamForm) FacesUtil.getManagedBean("enterExam");
 		Exam exam = examService.submitExam(enterExam.getExamId());
 		User user = exam.getUser();
