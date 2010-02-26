@@ -63,7 +63,7 @@ document.getElementById("categoryForm:selectedID").value=id;
 <f:facet name="header">
         <h:outputText value="²Ù×÷" />
  </f:facet>
-<h:commandButton value="É¾³ý" action="#{manageCategory.deleteCategory}"  onclick="selectCategory('#{category.id}')"/>
+<h:commandButton value="É¾³ý" image= "Images/delete.gif" action="#{manageCategory.deleteCategory}"  onclick="selectCategory('#{category.id}')"/>
 </h:column>
 </td>
 </h:dataTable>
