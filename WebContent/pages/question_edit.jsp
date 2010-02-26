@@ -21,19 +21,21 @@
 		</h:selectOneListbox> <p>		
 			</td>
 	</tr>
-	<tr height="20">
-		<td width="100"><h:outputText value="题目内容" />
+	<tr height="40">
+		<td><h:outputText value="题目内容" />
 		<img align="top"
 			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
 			title="此字段是必填字段"></td>
-		<td><h:inputTextarea value="#{manageQuestion.questionContent}" required="true"  >
+		<td><h:inputTextarea value="#{manageQuestion.questionContent}" required="true"  style="height:auto;width: 100%;">
 					<f:validateLength maximum="500" minimum="2" />		
 			</h:inputTextarea></td>
 	</tr>
-	
+	<tr height="20">
+		<td colspan=2 align="center"><h:outputText value="以下为选项部分，正确答案清在对应的选择框中打勾" /></td>
+	</tr>
 	<tr height="20">
 		<td width="100"><h:outputText value="选项1" /></td>
-		<td><h:inputTextarea value="#{manageQuestion.opt1.option}"  >
+		<td><h:inputTextarea value="#{manageQuestion.opt1.option}"  style="height:auto;width: 100%;">
 					<f:validateLength maximum="500" minimum="2" />		
 			</h:inputTextarea></td>
 		<td width="100"><h:selectBooleanCheckbox value="#{manageQuestion.opt1.correct}" /></td>
@@ -41,7 +43,7 @@
 	
 	<tr height="20">
 		<td width="100"><h:outputText value="选项2" /></td>
-		<td><h:inputTextarea value="#{manageQuestion.opt2.option}"   >
+		<td><h:inputTextarea value="#{manageQuestion.opt2.option}"  style="height:auto;width: 100%;" >
 					<f:validateLength maximum="500" minimum="2" />		
 			</h:inputTextarea></td>
 		<td width="100"><h:selectBooleanCheckbox value="#{manageQuestion.opt2.correct}" /></td>
@@ -49,7 +51,7 @@
 	
 		<tr height="20">
 		<td width="100"><h:outputText value="选项3" /></td>
-		<td><h:inputTextarea value="#{manageQuestion.opt3.option}"  >
+		<td><h:inputTextarea value="#{manageQuestion.opt3.option}" style="height:auto;width: 100%;" >
 					<f:validateLength maximum="500" minimum="2" />		
 			</h:inputTextarea></td>
 		<td width="100"><h:selectBooleanCheckbox value="#{manageQuestion.opt3.correct}" /></td>
@@ -57,7 +59,7 @@
 	
 	<tr height="20">
 		<td width="100"><h:outputText value="选项4" /></td>
-		<td><h:inputTextarea value="#{manageQuestion.opt4.option}"  >
+		<td><h:inputTextarea value="#{manageQuestion.opt4.option}" style="height:auto;width: 100%;">
 					<f:validateLength maximum="500" minimum="2" />		
 			</h:inputTextarea></td>
 <td width="100"><h:selectBooleanCheckbox value="#{manageQuestion.opt4.correct}" /></td>
@@ -65,7 +67,7 @@
 	
 	<tr height="20">
 		<td width="100"><h:outputText value="选项5" /></td>
-		<td><h:inputTextarea value="#{manageQuestion.opt5.option}"   >
+		<td><h:inputTextarea value="#{manageQuestion.opt5.option}" style="height:auto;width: 100%;" >
 					<f:validateLength maximum="500" minimum="2" />		
 			</h:inputTextarea></td>
 		<td width="100"><h:selectBooleanCheckbox value="#{manageQuestion.opt5.correct}" /></td>
@@ -73,7 +75,7 @@
 	
 	<tr height="20">
 		<td width="100"><h:outputText value="选项6" /></td>
-		<td><h:inputTextarea value="#{manageQuestion.opt6.option}" >
+		<td><h:inputTextarea value="#{manageQuestion.opt6.option}" style="height:auto;width: 100%;" >
 					<f:validateLength maximum="500" minimum="2" />		
 			</h:inputTextarea></td>
 		<td width="100"><h:selectBooleanCheckbox value="#{manageQuestion.opt6.correct}" /></td>
@@ -91,7 +93,7 @@
 		<tr height="20">
 		<td></td>
 		<td>&nbsp;<h:commandButton value="保存" action="#{manageQuestion.saveQuestion}"/>&nbsp;&nbsp;
-		<h:commandButton  type="button" value="返回" onclick="/pages/question_edit.faces"/></td>
+		<h:commandButton  type="button" value="返回" onclick="question_edit.faces"/></td>
 		<h:inputHidden id="selectedID" value="#{manageQuestion.selectedID}"/>
 		
 	</tr>
