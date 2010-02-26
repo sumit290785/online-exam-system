@@ -81,8 +81,15 @@ public class ExamServiceImpl implements ExamService {
 		// TODO Auto-generated method stub
 		Exam exam = examDAO.findById(examID, false);
 		Date today = new Date();
+		Category category = exam.getCategory();
+		int passedScore = (category.getPassedQuestions()/category.getTotalQuestions())*category.getTotalScore();
 		exam.setLastModified(today);
-		exam.setScore(this.caculateScore(exam));
+		int totalScore = this.caculateScore(exam);
+		exam.setScore(totalScore);
+		if (totalScore>=passedScore)
+		exam.setPass(true);
+		else 
+		exam.setPass(false);
 		exam = examDAO.makePersistent(exam);
 		return exam;
 	}
@@ -166,6 +173,14 @@ public class ExamServiceImpl implements ExamService {
 	public List<Exam> getAllExams() {
 		// TODO Auto-generated method stub
 		return examDAO.findAll();
+	}
+
+
+	@Override
+	public void removeExam(int ID) {
+		// TODO Auto-generated method stub
+		Exam exam = examDAO.findById(ID, false);
+		examDAO.makePersistent(exam);
 	}
 
 }
