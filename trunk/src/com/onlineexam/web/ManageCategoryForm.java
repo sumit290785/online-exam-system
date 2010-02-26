@@ -14,7 +14,7 @@ import com.onlineexam.service.QuestionService;
 public class ManageCategoryForm {
 
 	private String categoryName = "";
-	private int passScore;
+//	private int passScore;
 	private int totalTime;
 	private int questionCount;
 	private int passedQuestion ;
@@ -25,26 +25,48 @@ public class ManageCategoryForm {
 	private List<Category> categoryList;
 	private static final String forword_list = "list";
 	private static final String forword_edit = "edit";
+	private String errorMessage = "";
 	
 	public String addCategory() {
-		System.out.println("category name:" + categoryName + ";" + "pass score:" + passScore + ";" + "total time:" + totalTime + ";" + "question count:" + questionCount);
-		Category category ;
-		if (this.getSelectedID()>0){
-			category = qs.getCategoryByID(selectedID);category.setCreated(new Date());}
-		else
-			category = new Category();
-		category.setCategoryName(categoryName);
-		category.setExamTime(totalTime);
-		category.setPassedQuestions(passedQuestion);
-		category.setTotalQuestions(questionCount);
-		category.setTotalScore(totalScore);
-		qs.updateCategory(category);
+		System.out.println("category name:" + categoryName + ";" + "total time:" + totalTime + ";" + "question count:" + questionCount);
+		errorMessage="";
+		if (categoryName== null ||categoryName.length()==0)
+			errorMessage=errorMessage + "category name can't be null!";
+		if (questionCount==0)
+			errorMessage=errorMessage + "questionCount name can't be 0!";	
+		if (totalScore==0)
+			errorMessage=errorMessage + "totalScore name can't be 0!";	
+		if (passedQuestion>questionCount)
+			errorMessage=errorMessage + "passQuestion cannot be greater than totalQuestion!";	
+		if (passedQuestion==0)
+			errorMessage=errorMessage + "passedQuestion name can't be 0!";	
+		if (errorMessage.equals("")){
+		try {
+			Category category;
+			if (this.getSelectedID() > 0) {
+				category = qs.getCategoryByID(selectedID);
+				category.setCreated(new Date());
+			} else
+				category = new Category();
+			category.setCategoryName(categoryName);
+			category.setExamTime(totalTime);
+			category.setPassedQuestions(passedQuestion);
+			category.setTotalQuestions(questionCount);
+			category.setTotalScore(totalScore);
+			qs.updateCategory(category);
+		} catch (Exception e) {
+			// TODO: handle exception
+			errorMessage = errorMessage + "category name already exist";
+		}
+		}
 		this.setCategoryList(qs.getAllCategories());
+		if (!errorMessage.equals(""))
+			return forword_edit;
 		return forword_list;
 	}
 	
 	public String initCategory() {
-		System.out.println("category name:" + categoryName + ";" + "pass score:" + passScore + ";" + "total time:" + totalTime + ";" + "question count:" + questionCount);
+		System.out.println("category name:" + categoryName + ";" + "pass score:"  + "total time:" + totalTime + ";" + "question count:" + questionCount);
 		this.setCategoryName("");
 		this.setTotalTime(0);
 		this.setPassedQuestion(0);
@@ -87,19 +109,12 @@ public class ManageCategoryForm {
 		this.categoryName = categoryName;
 	}
 
-	/**
-	 * @return the passScore
-	 */
-	public int getPassScore() {
-		return passScore;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
-	/**
-	 * @param passScore
-	 *            the passScore to set
-	 */
-	public void setPassScore(int passScore) {
-		this.passScore = passScore;
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
 	/**
@@ -163,5 +178,6 @@ public class ManageCategoryForm {
 	public void setSelectedID(int selectedID) {
 		this.selectedID = selectedID;
 	}
+	
 
 }
