@@ -43,7 +43,7 @@
   <td><br/></td>
 </tr>
 <tr>
-  <td><a href="manage_history.html">学成考试历史查询</a></td>
+  <td><a href="exam_list.faces">学生考试历史查询</a></td>
 </tr>
 <tr>
   <td><br/></td>
