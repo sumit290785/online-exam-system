@@ -26,15 +26,20 @@ public class QuestionDAOImpl extends GenericDAOImpl<Question> implements Questio
 	public List<Question> getRandomeQuestions(Category category) {
 		// TODO Auto-generated method stub
 		EntityTransaction tx = this.getEntityManager().getTransaction();
+		List<Question> result;
 		tx.begin();
 		int question_num = category.getTotalQuestions();
 		Query query = getEntityManager().createQuery(
 				"from " + getEntityBeanType().getName()+" where category.id ="+category.getId());
 		Random   r=new   Random(); 
 		int size = query.getResultList().size();
+		if (size==question_num) 
+		result = query.getResultList();
+		else{
 		query.setMaxResults(question_num);
 		query.setFirstResult(r.nextInt(size-question_num)+1); 
-		List<Question> result =query.getResultList();
+		result =query.getResultList();
+		}
 		tx.commit();
 		return result;
 	}
