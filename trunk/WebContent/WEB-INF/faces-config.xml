@@ -122,6 +122,18 @@
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 
+	<managed-bean>
+		<managed-bean-name>manageExam</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.ManageExamForm</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>examForm</managed-bean-name>
+		<managed-bean-class>com.onlineexam.web.ExamForm</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
 	<!-- added by echo category manage navigation -->
 	<navigation-rule>
 		<from-view-id>/pages/question_list.jsp</from-view-id>
