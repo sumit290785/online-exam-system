@@ -69,7 +69,7 @@ document.getElementById("questionForm:selectedID").value=id;
 <h:inputHidden id="selectedID" value="#{manageExam.selectedID}"/>
 <tr>
 <br>
-</tr>>
+</tr>
 </h:form>
 </f:view>
 <tr>
