@@ -93,9 +93,15 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
 	@Override
 	public T makePersistent(T entity) {
+		T result;
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		T result = getEntityManager().merge(entity);
+		try {
+			result = getEntityManager().merge(entity);
+		} catch (RuntimeException e) {
+			tx.rollback();
+			throw e;
+		}
 		tx.commit();
 		return result;
 	}
@@ -116,13 +122,15 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 	public void clear() {
 		getEntityManager().clear();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> executeQuery(DetachedCriteria query){
-//		EntityTransaction tx = this.getEntityManager().getTransaction();;
-		List<T> results = query.getExecutableCriteria(((org.hibernate.ejb.HibernateEntityManager) getEntityManager()).getSession()).list();
-//		tx.commit();
+	public List<T> executeQuery(DetachedCriteria query) {
+		// EntityTransaction tx = this.getEntityManager().getTransaction();;
+		List<T> results = query.getExecutableCriteria(
+				((org.hibernate.ejb.HibernateEntityManager) getEntityManager())
+						.getSession()).list();
+		// tx.commit();
 		return results;
 	}
 
