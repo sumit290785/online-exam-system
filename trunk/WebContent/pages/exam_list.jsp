@@ -31,9 +31,31 @@ document.getElementById("questionForm:selectedID").value=id;
 <td>
 <h:column>
 <f:facet name="header">
-        <h:outputText value="用户名" />
+        <h:outputText value="考生登陆名" />
  </f:facet>
 <h:commandLink value="#{examForm.user}"  onclick="selectID('#{examForm.id}')"/>
+</h:column>
+</td>
+<td>
+<h:column>
+<f:facet name="header">
+        <h:outputText value="考生姓名" />
+ </f:facet>
+<h:commandLink value="#{examForm.userName}"  onclick="selectID('#{examForm.id}')"/>
+</h:column>
+</td>
+<h:column>
+<f:facet name="header">
+        <h:outputText value="考试成绩" />
+ </f:facet>
+<h:commandLink value="#{examForm.totalScore}"  onclick="selectID('#{examForm.id}')"/>
+</h:column>
+</td>
+<h:column>
+<f:facet name="header">
+        <h:outputText value="考核结果" />
+ </f:facet>
+<h:commandLink value="#{examForm.passed}"  onclick="selectID('#{examForm.id}')"/>
 </h:column>
 </td>
 <h:column>
