@@ -23,5 +23,7 @@ public interface AccountService {
 	
 	public User getUserByID(int ID);
 	
+	public void delete(User user);
+	
 	public List<Category> getCategories(String userName);
 }
