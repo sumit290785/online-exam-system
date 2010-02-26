@@ -4,6 +4,8 @@
  */
 package com.onlineexam.service;
 
+import java.util.List;
+
 import com.onlineexam.domain.Answer;
 import com.onlineexam.domain.Exam;
 import com.onlineexam.util.InterBoolean;
@@ -21,4 +23,7 @@ public interface ExamService {
 	public Answer submitAnswer(int answerID, int... optionID);
 
 	public Answer getQuestion(int examID,int seqNUM,InterBoolean isLAST);
+	
+	public List<Exam> getAllExams();
+
 }
