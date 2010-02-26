@@ -142,5 +142,15 @@ public class QuestionServiceImpl implements QuestionService {
 	public void setOptionDAO(OptionDAO optionDAO) {
 		this.optionDAO = optionDAO;
 	}
+
+	@Override
+	public List<Category> getQuestionsByCategory(String name) {
+		// TODO Auto-generated method stub
+		Category category = categoryDAO.getCategoryByName(name);
+		if(category==null)
+			return new ArrayList();
+		else
+			return new ArrayList(category.getQuestions());
+	}
 	
 }

@@ -183,4 +183,12 @@ public class ExamServiceImpl implements ExamService {
 		examDAO.makePersistent(exam);
 	}
 
+
+	@Override
+	public List<Exam> getExamsByCategoryName(String categoryName) {
+		// TODO Auto-generated method stub
+
+		return null;
+	}
+
 }
