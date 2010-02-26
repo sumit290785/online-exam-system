@@ -9,8 +9,11 @@
 	<h:messages showDetail="#{true}" showSummary="#{true}" />
 	<h:form>
 		<table align="center">
-
 	<tr height="20">
+		<td colspan="2" align="center"><FONT color="red"><h:outputText value="#{manageQuestion.errorMessage}" /></FONT>	
+		</td>
+	</tr>
+		<tr height="20">
 		<td width="100"><h:outputText value="科目名称" />
 		<img align="top"
 			src="Images/required_field.gif" border="0" alt="此字段是必填字段"
@@ -93,7 +96,7 @@
 		<tr height="20">
 		<td></td>
 		<td>&nbsp;<h:commandButton value="保存" action="#{manageQuestion.saveQuestion}"/>&nbsp;&nbsp;
-		<h:commandButton  type="button" value="返回" onclick="question_edit.faces"/></td>
+		<h:commandButton  type="button" value="返回" /></td>
 		<h:inputHidden id="selectedID" value="#{manageQuestion.selectedID}"/>
 		
 	</tr>
