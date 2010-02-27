@@ -49,8 +49,7 @@
 			</tr>
 			<tr><td><FONT color="red"><h:outputText value="ÇëÑ¡Ôñ¿ÆÄ¿" rendered="#{selectCategory.noCateSeleted}" /></FONT></td></tr>
 			<tr>
-				<td align="center"><input type="image"
-					src="Images/choicebar1_r1_c1.png" /><h:commandButton
+				<td align="center"><h:commandButton
 					action="#{selectCategory.showCategory}"
 					image="Images/choicebar1_r1_c2.png" /></td>
 			</tr>
