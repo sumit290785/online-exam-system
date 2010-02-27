@@ -34,11 +34,13 @@ public class LoginFilter implements Filter {
 				return;
 			}
 		}
-		// call next filter in the chain : let j_security_check authenticate
-		// user
-		chain.doFilter(request, response);
 
-		// post login action
+		try {
+			chain.doFilter(request, response);
+		} catch (Exception e) {
+			res.sendRedirect(req.getContextPath() + "/pages/error.jsp");
+		}
+
 
 	}
 
